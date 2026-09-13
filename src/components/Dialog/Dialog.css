@@ -23,7 +23,7 @@
   color: var(--all-text);
   border: var(--all-border-width, 1.5px) solid var(--all-border);
   border-radius: var(--all-radius-lg, 8px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--all-shadow-lg, 0 12px 32px rgba(0, 0, 0, 0.4));
   outline: none;
   animation: all-dialog-zoom-in var(--all-duration-fast, 150ms) var(--all-ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
 }

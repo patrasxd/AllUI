@@ -38,6 +38,9 @@ export interface CenteredUtilityLayoutProps {
 export interface FullBleedLayoutProps {
   children: React.ReactNode
   floatingToolbar?: React.ReactNode
+  /** Static controls bar rendered below the canvas — does not overlay the content. */
+  footer?: React.ReactNode
   statusBar?: React.ReactNode
+  toolbarPosition?: 'top' | 'bottom'
   className?: string
 }

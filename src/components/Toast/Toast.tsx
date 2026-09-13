@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import { Alert, type AlertVariant } from './Alert'
+import { Alert, type AlertVariant } from '../Alert'
 import './Toast.css'
 
 export interface ToastProps {

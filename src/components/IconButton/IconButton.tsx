@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { Button, type ButtonProps } from './Button'
+import { Button, type ButtonProps } from '../Button'
 import './IconButton.css'
 
 export interface IconButtonProps extends Omit<ButtonProps, 'children' | 'fullWidth' | 'iconPosition'> {

@@ -1,0 +1,85 @@
+/* ─── Shared StatsHeader Component Styles ─── */
+
+.all-stats-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  max-width: 100%;
+}
+
+.all-stats-header__label {
+  margin: 0;
+  font-family: var(--all-font-sans, inherit);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--all-text-muted, var(--text-muted, #888888));
+  max-width: 100%;
+  text-align: right;
+  line-height: 1;
+}
+
+.all-stats-header__row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--all-space-2, 8px);
+  font-family: var(--all-font-mono, monospace);
+  font-size: 0.9375rem;
+  line-height: 1.2;
+}
+
+.all-stats-header__entry {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.all-stats-header__item {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
+}
+
+.all-stats-header__val {
+  font-weight: 700;
+  color: var(--all-text, var(--text, #ffffff));
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.all-stats-header__key {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--all-text-dim, var(--text-dim, #aaaaaa));
+  white-space: nowrap;
+}
+
+.all-stats-header__sep {
+  color: var(--all-border-2, var(--border-2, #555555));
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.all-stats-header__reset {
+  background: transparent;
+  border: none;
+  color: var(--all-text-muted, var(--text-muted, #888888));
+  cursor: pointer;
+  padding: 0 2px;
+  font-size: 0.875rem;
+  line-height: 1;
+  transition:
+    color var(--all-duration-fast, 150ms) ease,
+    transform var(--all-duration-fast, 150ms) ease;
+}
+
+.all-stats-header__reset:hover {
+  color: var(--all-text, var(--text, #ffffff));
+  transform: rotate(-30deg);
+}

@@ -1,0 +1,54 @@
+/* ─── AppFooter Component Styles ─── */
+
+.all-app-footer {
+  width: 100%;
+  margin-top: auto;
+  padding: var(--all-space-6, 1.5rem) var(--all-space-4, 1rem) var(--all-space-8, 2rem);
+  border-top: var(--all-border-width-sm, 1px) solid var(--all-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--all-space-3, 0.75rem);
+  box-sizing: border-box;
+  background: transparent;
+  color: var(--all-text-muted);
+  font-family: var(--all-font-sans, inherit);
+  font-size: 0.75rem;
+}
+
+.all-app-footer__links {
+  display: flex;
+  align-items: center;
+  gap: var(--all-space-4, 1rem);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.all-app-footer__link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--all-font-sans, inherit);
+  font-size: 0.75rem;
+  color: var(--all-text-muted);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color var(--all-duration-fast, 150ms) ease;
+}
+
+.all-app-footer__link:hover {
+  color: var(--all-text);
+}
+
+.all-app-footer__copyright {
+  font-size: 0.6875rem;
+  color: var(--all-text-dim);
+  opacity: 0.8;
+}
+
+/* E-Ink Support */
+[data-eink='true'] .all-app-footer {
+  border-top: var(--all-border-width, 2px) solid var(--all-border) !important;
+  color: var(--all-text) !important;
+}

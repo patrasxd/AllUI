@@ -1,4 +1,8 @@
 import { describe, it, expect } from 'vitest'
+import { render, waitFor } from '@testing-library/react'
+import React from 'react'
+import { ThemeProvider } from '../../theme/ThemeProvider'
+import { useTheme } from '../../theme/useTheme'
 import { COLOR_TOKENS, ThemeName } from '../colors'
 import { SPACING_TOKENS } from '../spacing'
 import { RADII_TOKENS } from '../radii'
@@ -67,5 +71,30 @@ describe('Design Tokens Contract & Values', () => {
       expect(val).toBeGreaterThan(prevVal)
       prevVal = val
     }
+  })
+
+  it('preserves semantic E-Ink theme values on the document root', async () => {
+    function ThemeSetter() {
+      const { setTheme } = useTheme()
+
+      React.useEffect(() => {
+        setTheme('e-ink-dark')
+      }, [setTheme])
+
+      return null
+    }
+
+    render(
+      React.createElement(ThemeProvider, {
+        defaultTheme: 'dark',
+        children: React.createElement(ThemeSetter),
+      })
+    )
+
+    await waitFor(() => {
+      expect(document.documentElement.getAttribute('data-theme')).toBe('e-ink-dark')
+      expect(document.documentElement.getAttribute('data-all-theme')).toBe('e-ink-dark')
+      expect(document.documentElement.getAttribute('data-eink')).toBe('true')
+    })
   })
 })

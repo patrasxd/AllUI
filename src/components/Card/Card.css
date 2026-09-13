@@ -31,7 +31,7 @@
 
 .all-card--elevated {
   border-color: var(--all-border);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--all-shadow-md, 0 4px 12px rgba(0, 0, 0, 0.25));
 }
 
 /* Interactive card */

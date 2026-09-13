@@ -1,0 +1,46 @@
+/* ─── Shared BackLink Component Styles ─── */
+
+.all-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--all-space-2, 8px);
+  padding: 0;
+  margin: var(--all-space-4, 16px) 0 var(--all-space-3, 12px);
+  border: none;
+  background: transparent;
+  color: var(--all-text-muted, var(--text-muted, #94a3b8));
+  cursor: pointer;
+  font-family: var(--all-font-sans, inherit);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  user-select: none;
+  transition: color var(--all-duration-fast, 150ms) ease;
+}
+
+.all-back-link:hover {
+  color: var(--all-text, var(--text, #ffffff));
+}
+
+.all-back-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--all-focus-ring);
+  border-radius: var(--all-radius-sm, 2px);
+}
+
+.all-back-link__icon {
+  flex-shrink: 0;
+  transition: transform var(--all-duration-fast, 150ms) ease;
+}
+
+.all-back-link:hover .all-back-link__icon {
+  transform: translateX(-3px);
+}
+
+@media (max-width: 600px) {
+  .all-back-link {
+    margin: 0.35rem 0 0.2rem;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useId } from 'react'
 import { createPortal } from 'react-dom'
-import { IconButton } from './IconButton'
+import { IconButton } from '../IconButton'
 import './Dialog.css'
 
 export interface DialogProps {

@@ -1,0 +1,84 @@
+/* ─── ModeSelect Component Styles ─── */
+
+.all-mode-select,
+.game-mode-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--all-space-4, 1rem);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.all-mode-label,
+.game-mode-label {
+  font-family: var(--all-font-sans, inherit);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--all-text-muted);
+  margin: 0;
+  text-align: center;
+}
+
+.all-mode-options,
+.game-mode-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--all-space-3, 0.75rem);
+  width: 100%;
+}
+
+.all-mode-card,
+.game-mode-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--all-space-5, 1.25rem) var(--all-space-4, 1rem);
+  background: var(--all-surface);
+  border: var(--all-border-width-sm, 1px) solid var(--all-border);
+  border-radius: var(--all-radius, 4px);
+  color: var(--all-text);
+  cursor: pointer;
+  transition:
+    border-color var(--all-duration-fast, 150ms) ease,
+    background var(--all-duration-fast, 150ms) ease,
+    transform var(--all-duration-fast, 150ms) ease;
+  user-select: none;
+}
+
+.all-mode-card:hover,
+.game-mode-card:hover {
+  border-color: var(--all-border-2);
+  background: var(--all-surface-2);
+  transform: translateY(-2px);
+}
+
+.all-mode-icon,
+.game-mode-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: var(--all-space-2, 0.5rem);
+  color: var(--all-text);
+}
+
+.all-mode-title,
+.game-mode-title {
+  font-family: var(--all-font-sans, inherit);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--all-text);
+  margin-bottom: var(--all-space-1, 0.25rem);
+}
+
+.all-mode-desc,
+.game-mode-desc {
+  font-size: 0.75rem;
+  color: var(--all-text-dim);
+  line-height: 1.4;
+}

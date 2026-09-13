@@ -15,7 +15,14 @@ import {
   Stack,
   Heading,
   Text,
+  HeaderMenu,
+  AppHeader,
+  AppFooter,
+  LegalNotice,
+  ControlsBar,
+  ModeSelect,
 } from '../index'
+import { formatTime, formatStopwatchTime, pad3 } from '../../utils'
 
 describe('@all/ui Shared Components Public API', () => {
   describe('Button & IconButton', () => {
@@ -259,6 +266,159 @@ describe('@all/ui Shared Components Public API', () => {
       render(<Text variant="body">Important information</Text>)
       const text = screen.getByText('Important information')
       expect(text).toHaveClass('all-text--body')
+    })
+  })
+
+  describe('HeaderMenu & AppHeader', () => {
+    it('renders AppHeader with logo, title, actions, and menu', () => {
+      render(
+        <AppHeader
+          logo={<span data-testid="test-logo">AllTest</span>}
+          title="Sample Title"
+          actions={<span data-testid="test-action">Extra</span>}
+          menu={<span data-testid="test-menu">Menu</span>}
+        />
+      )
+      expect(screen.getByTestId('test-logo')).toBeInTheDocument()
+      expect(screen.getByText('Sample Title')).toBeInTheDocument()
+      expect(screen.getByTestId('test-action')).toBeInTheDocument()
+      expect(screen.getByTestId('test-menu')).toBeInTheDocument()
+    })
+
+    it('opens and closes HeaderMenu dropdown with options', () => {
+      const handleLocaleChange = vi.fn()
+      const handleThemeChange = vi.fn()
+      const handleEinkChange = vi.fn()
+
+      render(
+        <HeaderMenu
+          locale="en"
+          onLocaleChange={handleLocaleChange}
+          theme="dark"
+          onThemeChange={handleThemeChange}
+          isEink={false}
+          onEinkChange={handleEinkChange}
+        />
+      )
+
+      const toggle = screen.getByRole('button', { name: /preferences/i })
+      expect(toggle).toBeInTheDocument()
+
+      // Open menu
+      fireEvent.click(toggle)
+      expect(screen.getByRole('dialog')).toBeInTheDocument()
+      expect(screen.getByText('English')).toBeInTheDocument()
+      expect(screen.getByText('Polski')).toBeInTheDocument()
+
+      // Select PL
+      const plBtn = screen.getByRole('button', { name: /Polski/i })
+      fireEvent.click(plBtn)
+      expect(handleLocaleChange).toHaveBeenCalledWith('pl')
+
+      // Select Light Theme
+      const lightBtn = screen.getByRole('button', { name: /Light/i })
+      fireEvent.click(lightBtn)
+      expect(handleThemeChange).toHaveBeenCalledWith('light')
+
+      // Toggle E-Ink on
+      const einkOnBtn = screen.getByRole('button', { name: /On/i })
+      fireEvent.click(einkOnBtn)
+      expect(handleEinkChange).toHaveBeenCalledWith(true)
+
+      // Close menu
+      fireEvent.click(toggle)
+      expect(toggle).toHaveAttribute('aria-expanded', 'false')
+    })
+  })
+
+  describe('AppFooter', () => {
+    it('renders copyright, custom links, and legal notice link', () => {
+      const handleLegal = vi.fn()
+      render(
+        <AppFooter
+          copyright="TestApp © 2026."
+          legalLabel="Legal Notice"
+          onLegalClick={handleLegal}
+          links={[{ label: 'GitHub', href: 'https://github.com', external: true }]}
+        />
+      )
+
+      expect(screen.getByText('TestApp © 2026.')).toBeInTheDocument()
+      const legalBtn = screen.getByRole('button', { name: 'Legal Notice' })
+      expect(legalBtn).toBeInTheDocument()
+      fireEvent.click(legalBtn)
+      expect(handleLegal).toHaveBeenCalledTimes(1)
+
+      const link = screen.getByRole('link', { name: 'GitHub' })
+      expect(link).toBeInTheDocument()
+      expect(link).toHaveAttribute('href', 'https://github.com')
+      expect(link).toHaveAttribute('target', '_blank')
+    })
+  })
+
+  describe('LegalNotice', () => {
+    it('renders bilingual content correctly', () => {
+      const { rerender } = render(<LegalNotice appName="AllGames" locale="en" />)
+      expect(screen.getByText('Legal Notice & Privacy')).toBeInTheDocument()
+      expect(screen.getByText(/AllGames runs entirely within your browser/i)).toBeInTheDocument()
+
+      rerender(<LegalNotice appName="AllGames" locale="pl" />)
+      expect(screen.getByText('Informacje prawne & Prywatność')).toBeInTheDocument()
+      expect(screen.getByText(/AllGames działa wyłącznie w Twojej przeglądarce/i)).toBeInTheDocument()
+    })
+  })
+
+  describe('ControlsBar', () => {
+    it('renders children with semantic styling class', () => {
+      render(
+        <ControlsBar data-testid="controls-bar">
+          <button>Action 1</button>
+          <button>Action 2</button>
+        </ControlsBar>
+      )
+      const bar = screen.getByTestId('controls-bar')
+      expect(bar).toHaveClass('all-controls-bar')
+      expect(screen.getByRole('button', { name: 'Action 1' })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: 'Action 2' })).toBeInTheDocument()
+    })
+  })
+
+  describe('ModeSelect', () => {
+    it('renders segmented mode options and responds to selection with id/value', () => {
+      const handleChange = vi.fn()
+      render(
+        <ModeSelect
+          options={[
+            { id: 'easy', label: 'Easy' },
+            { id: 'hard', label: 'Hard' },
+          ]}
+          value="easy"
+          onChange={handleChange}
+        />
+      )
+
+      const hardBtn = screen.getByRole('button', { name: 'Hard' })
+      expect(hardBtn).toBeInTheDocument()
+      expect(hardBtn).toHaveAttribute('aria-pressed', 'false')
+
+      const easyBtn = screen.getByRole('button', { name: 'Easy' })
+      expect(easyBtn).toHaveAttribute('aria-pressed', 'true')
+
+      fireEvent.click(hardBtn)
+      expect(handleChange).toHaveBeenCalledWith('hard')
+    })
+  })
+
+  describe('Formatters', () => {
+    it('correctly pads numbers and formats time / stopwatch', () => {
+      expect(pad3(5)).toBe('005')
+      expect(pad3(42)).toBe('042')
+      expect(pad3(999)).toBe('999')
+
+      expect(formatTime(65)).toBe('01:05')
+      expect(formatTime(3605)).toBe('60:05')
+
+      expect(formatStopwatchTime(65430)).toBe('01:05.43')
     })
   })
 })

@@ -32,8 +32,8 @@ export function ThemeProvider({
 
     const root = document.documentElement
 
-    // Primary semantic theme attribute
-    root.setAttribute('data-theme', isDark ? 'dark' : 'light')
+    // Primary semantic theme attribute preserves the full theme contract.
+    root.setAttribute('data-theme', theme)
     root.setAttribute('data-all-theme', theme)
 
     // Legacy E-Ink attribute for backward compatibility
