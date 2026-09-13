@@ -1,0 +1,13 @@
+:root {
+  --all-border-width-sm: 1px;
+  --all-border-width:    1.5px;
+  --all-border-width-lg: 2px;
+
+  --all-border-style: solid;
+}
+
+[data-eink='true'] {
+  --all-border-width-sm: 1.5px;
+  --all-border-width:    2px;
+  --all-border-width-lg: 2.5px;
+}

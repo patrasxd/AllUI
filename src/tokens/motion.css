@@ -1,0 +1,43 @@
+:root {
+  --all-ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --all-ease-in-out:   cubic-bezier(0.4, 0, 0.2, 1);
+  --all-duration-fast: 150ms;
+  --all-duration:      250ms;
+  --all-duration-slow: 400ms;
+
+  /* Legacy aliases */
+  --ease-out-expo: var(--all-ease-out-expo);
+  --ease-in-out:   var(--all-ease-in-out);
+  --duration-fast: var(--all-duration-fast);
+  --duration:      var(--all-duration);
+  --duration-slow: var(--all-duration-slow);
+}
+
+[data-motion='none'],
+[data-eink='true'],
+[data-theme='e-ink-light'],
+[data-theme='e-ink-dark'] {
+  --all-duration-fast: 0ms !important;
+  --all-duration:      0ms !important;
+  --all-duration-slow: 0ms !important;
+  --duration-fast:     0ms !important;
+  --duration:          0ms !important;
+  --duration-slow:     0ms !important;
+}
+
+[data-motion='expressive'] {
+  --all-duration-fast: 200ms;
+  --all-duration:      350ms;
+  --all-duration-slow: 500ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

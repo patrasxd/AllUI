@@ -1,0 +1,20 @@
+:root,
+[data-theme='dark'] {
+  --all-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --all-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.4);
+  --all-shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] {
+  --all-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --all-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.12);
+  --all-shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.18);
+}
+
+[data-eink='true'],
+[data-theme='e-ink-light'],
+[data-theme='e-ink-dark'] {
+  --all-shadow-sm: none !important;
+  --all-shadow-md: none !important;
+  --all-shadow-lg: none !important;
+}

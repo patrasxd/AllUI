@@ -1,0 +1,70 @@
+export interface ColorTokens {
+  bg: string
+  surface: string
+  surface2: string
+  border: string
+  border2: string
+  text: string
+  textMuted: string
+  textDim: string
+  accent: string
+  accentDim: string
+  focusRing: string
+}
+
+export type ThemeName = 'dark' | 'light' | 'e-ink-light' | 'e-ink-dark'
+
+export const COLOR_TOKENS: Record<ThemeName, ColorTokens> = {
+  dark: {
+    bg: '#0a0a0a',
+    surface: '#111111',
+    surface2: '#181818',
+    border: '#242424',
+    border2: '#333333',
+    text: '#efefef',
+    textMuted: '#5a5a5a',
+    textDim: '#888888',
+    accent: '#ffffff',
+    accentDim: '#cccccc',
+    focusRing: 'rgba(255, 190, 92, 0.5)',
+  },
+  light: {
+    bg: '#f2f1ec',
+    surface: '#ffffff',
+    surface2: '#ebebeb',
+    border: '#dcdcdc',
+    border2: '#c0c0c0',
+    text: '#111111',
+    textMuted: '#aaaaaa',
+    textDim: '#777777',
+    accent: '#000000',
+    accentDim: '#333333',
+    focusRing: 'rgba(0, 0, 0, 0.4)',
+  },
+  'e-ink-light': {
+    bg: '#ffffff',
+    surface: '#ffffff',
+    surface2: '#f0f0f0',
+    border: '#000000',
+    border2: '#000000',
+    text: '#000000',
+    textMuted: '#1a1a1a',
+    textDim: '#000000',
+    accent: '#000000',
+    accentDim: '#000000',
+    focusRing: '#000000',
+  },
+  'e-ink-dark': {
+    bg: '#000000',
+    surface: '#000000',
+    surface2: '#1a1a1a',
+    border: '#ffffff',
+    border2: '#ffffff',
+    text: '#ffffff',
+    textMuted: '#e0e0e0',
+    textDim: '#ffffff',
+    accent: '#ffffff',
+    accentDim: '#ffffff',
+    focusRing: '#ffffff',
+  },
+}

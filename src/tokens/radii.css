@@ -1,0 +1,17 @@
+:root {
+  --all-radius-none: 0px;
+  --all-radius-sm:   2px;
+  --all-radius:      4px;
+  --all-radius-lg:   8px;
+  --all-radius-full: 9999px;
+
+  /* Legacy aliases */
+  --radius-sm: var(--all-radius-sm);
+  --radius:    var(--all-radius);
+  --radius-lg: var(--all-radius-lg);
+}
+
+[data-eink='true'] {
+  --all-radius-sm: 0px;
+  --all-radius:    0px;
+}

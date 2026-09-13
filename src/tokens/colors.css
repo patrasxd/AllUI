@@ -1,0 +1,107 @@
+/* ─── Shared Neutral Color Tokens ─── */
+/* Direct extraction from AllGames and AllTools verified token blocks */
+
+:root,
+[data-theme='dark'] {
+  --all-bg:         #0a0a0a;
+  --all-surface:    #111111;
+  --all-surface-2:  #181818;
+  --all-border:     #242424;
+  --all-border-2:   #333333;
+  --all-text:       #efefef;
+  --all-text-muted: #5a5a5a;
+  --all-text-dim:   #888888;
+  --all-accent:     #ffffff;
+  --all-accent-dim: #cccccc;
+  --all-focus-ring: rgba(255, 190, 92, 0.5);
+
+  /* Aliases for backward compatibility with legacy app styles */
+  --bg:         var(--all-bg);
+  --surface:    var(--all-surface);
+  --surface-2:  var(--all-surface-2);
+  --border:     var(--all-border);
+  --border-2:   var(--all-border-2);
+  --text:       var(--all-text);
+  --text-muted: var(--all-text-muted);
+  --text-dim:   var(--all-text-dim);
+  --accent:     var(--all-accent);
+  --accent-dim: var(--all-accent-dim);
+}
+
+[data-theme='light'] {
+  --all-bg:         #f2f1ec;
+  --all-surface:    #ffffff;
+  --all-surface-2:  #ebebeb;
+  --all-border:     #dcdcdc;
+  --all-border-2:   #c0c0c0;
+  --all-text:       #111111;
+  --all-text-muted: #aaaaaa;
+  --all-text-dim:   #777777;
+  --all-accent:     #000000;
+  --all-accent-dim: #333333;
+  --all-focus-ring: rgba(0, 0, 0, 0.4);
+
+  --bg:         var(--all-bg);
+  --surface:    var(--all-surface);
+  --surface-2:  var(--all-surface-2);
+  --border:     var(--all-border);
+  --border-2:   var(--all-border-2);
+  --text:       var(--all-text);
+  --text-muted: var(--all-text-muted);
+  --text-dim:   var(--all-text-dim);
+  --accent:     var(--all-accent);
+  --accent-dim: var(--all-accent-dim);
+}
+
+[data-theme='e-ink-light'],
+[data-eink='true'],
+[data-eink='true'][data-theme='light'] {
+  --all-bg:         #ffffff !important;
+  --all-surface:    #ffffff !important;
+  --all-surface-2:  #f0f0f0 !important;
+  --all-border:     #000000 !important;
+  --all-border-2:   #000000 !important;
+  --all-text:       #000000 !important;
+  --all-text-muted: #1a1a1a !important;
+  --all-text-dim:   #000000 !important;
+  --all-accent:     #000000 !important;
+  --all-accent-dim: #000000 !important;
+  --all-focus-ring: #000000 !important;
+
+  --bg:         var(--all-bg);
+  --surface:    var(--all-surface);
+  --surface-2:  var(--all-surface-2);
+  --border:     var(--all-border);
+  --border-2:   var(--all-border-2);
+  --text:       var(--all-text);
+  --text-muted: var(--all-text-muted);
+  --text-dim:   var(--all-text-dim);
+  --accent:     var(--all-accent);
+  --accent-dim: var(--all-accent-dim);
+}
+
+[data-theme='e-ink-dark'],
+[data-eink='true'][data-theme='dark'] {
+  --all-bg:         #000000 !important;
+  --all-surface:    #000000 !important;
+  --all-surface-2:  #1a1a1a !important;
+  --all-border:     #ffffff !important;
+  --all-border-2:   #ffffff !important;
+  --all-text:       #ffffff !important;
+  --all-text-muted: #e0e0e0 !important;
+  --all-text-dim:   #ffffff !important;
+  --all-accent:     #ffffff !important;
+  --all-accent-dim: #ffffff !important;
+  --all-focus-ring: #ffffff !important;
+
+  --bg:         var(--all-bg);
+  --surface:    var(--all-surface);
+  --surface-2:  var(--all-surface-2);
+  --border:     var(--all-border);
+  --border-2:   var(--all-border-2);
+  --text:       var(--all-text);
+  --text-muted: var(--all-text-muted);
+  --text-dim:   var(--all-text-dim);
+  --accent:     var(--all-accent);
+  --accent-dim: var(--all-accent-dim);
+}
