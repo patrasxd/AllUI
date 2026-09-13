@@ -4,11 +4,14 @@ import { IconButton } from './IconButton'
 import './Dialog.css'
 
 export interface DialogProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen?: boolean
+  open?: boolean
+  onClose?: () => void
+  onOpenChange?: (open: boolean) => void
   title?: React.ReactNode
   description?: React.ReactNode
   children?: React.ReactNode
+  footer?: React.ReactNode
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'full'
   closeOnOverlayClick?: boolean
   closeOnEsc?: boolean
@@ -18,16 +21,25 @@ export interface DialogProps {
 
 export function Dialog({
   isOpen,
+  open,
   onClose,
+  onOpenChange,
   title,
   description,
   children,
+  footer,
   maxWidth = 'md',
   closeOnOverlayClick = true,
   closeOnEsc = true,
   showCloseButton = true,
   className = '',
 }: DialogProps) {
+  const isDialogActive = open ?? isOpen ?? false
+  const handleClose = () => {
+    onClose?.()
+    onOpenChange?.(false)
+  }
+
   const generatedId = useId()
   const titleId = `${generatedId}-title`
   const descId = `${generatedId}-desc`
@@ -35,7 +47,7 @@ export function Dialog({
   const previousActiveElement = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
-    if (!isOpen) return
+    if (!isDialogActive) return
 
     previousActiveElement.current = document.activeElement as HTMLElement
     const originalOverflow = document.body.style.overflow
@@ -44,7 +56,7 @@ export function Dialog({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (closeOnEsc && e.key === 'Escape') {
         e.stopPropagation()
-        onClose()
+        handleClose()
       }
 
       // Simple focus trap
@@ -94,13 +106,13 @@ export function Dialog({
         previousActiveElement.current.focus()
       }
     }
-  }, [isOpen, onClose, closeOnEsc])
+  }, [isDialogActive, closeOnEsc])
 
-  if (!isOpen) return null
+  if (!isDialogActive) return null
 
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (closeOnOverlayClick && e.target === e.currentTarget) {
-      onClose()
+      handleClose()
     }
   }
 
@@ -140,7 +152,7 @@ export function Dialog({
                 variant="ghost"
                 size="sm"
                 className="all-dialog__close"
-                onClick={onClose}
+                onClick={handleClose}
                 icon={
                   <svg viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none">
                     <line x1="18" y1="6" x2="6" y2="18" />
@@ -153,6 +165,7 @@ export function Dialog({
         )}
 
         <div className="all-dialog__body">{children}</div>
+        {footer && <DialogFooter>{footer}</DialogFooter>}
       </div>
     </div>
   )

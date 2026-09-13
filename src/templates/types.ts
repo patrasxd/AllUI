@@ -4,7 +4,7 @@ export type BoardVariant = 'square' | 'wide' | 'fluid'
 
 export interface BoardLayoutProps {
   children?: React.ReactNode
-  board: React.ReactNode
+  board?: React.ReactNode
   hud?: React.ReactNode
   controls?: React.ReactNode
   sidePanel?: React.ReactNode
