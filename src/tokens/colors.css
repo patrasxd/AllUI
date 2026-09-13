@@ -74,7 +74,7 @@
 }
 
 [data-theme='e-ink-light'],
-[data-eink='true'],
+[data-eink='true']:not([data-theme='e-ink-dark']):not([data-theme='dark']),
 [data-eink='true'][data-theme='light'] {
   --all-bg:         #ffffff !important;
   --all-surface:    #ffffff !important;
@@ -111,6 +111,7 @@
 }
 
 [data-theme='e-ink-dark'],
+[data-eink='true'][data-theme='e-ink-dark'],
 [data-eink='true'][data-theme='dark'] {
   --all-bg:         #000000 !important;
   --all-surface:    #000000 !important;
