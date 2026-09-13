@@ -1,0 +1,64 @@
+/* ─── Shared Toast Component Styles ─── */
+
+.all-toast-wrapper {
+  position: fixed;
+  z-index: 1100;
+  pointer-events: none;
+  display: flex;
+  padding: var(--all-space-4, 16px);
+}
+
+.all-toast-wrapper--bottom-right {
+  bottom: env(safe-area-inset-bottom, 16px);
+  right: env(safe-area-inset-right, 16px);
+  justify-content: flex-end;
+}
+
+.all-toast-wrapper--bottom-center {
+  bottom: env(safe-area-inset-bottom, 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: center;
+}
+
+.all-toast-wrapper--top-right {
+  top: env(safe-area-inset-top, 16px);
+  right: env(safe-area-inset-right, 16px);
+  justify-content: flex-end;
+}
+
+.all-toast-wrapper--top-center {
+  top: env(safe-area-inset-top, 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: center;
+}
+
+.all-toast {
+  pointer-events: auto;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  border-radius: var(--all-radius, 4px);
+  animation: all-toast-slide-in var(--all-duration-fast, 150ms) var(--all-ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+}
+
+.all-toast__alert {
+  width: 100%;
+}
+
+.all-toast__action {
+  margin-top: var(--all-space-2, 8px);
+}
+
+/* Animations: GPU-accelerated opacity and transform ONLY */
+@keyframes all-toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

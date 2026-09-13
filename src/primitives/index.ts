@@ -1,1 +1,1 @@
-export * from './DPad'
+export * from '../components/index'

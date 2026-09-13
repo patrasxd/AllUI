@@ -15,6 +15,16 @@
   --all-accent-dim: #cccccc;
   --all-focus-ring: rgba(255, 190, 92, 0.5);
 
+  /* Semantic Intent Tokens */
+  --all-danger:          #f87171;
+  --all-danger-surface:  rgba(239, 68, 68, 0.15);
+  --all-warning:         #fbbf24;
+  --all-warning-surface: rgba(245, 158, 11, 0.15);
+  --all-success:         #34d399;
+  --all-success-surface: rgba(16, 185, 129, 0.15);
+  --all-info:            #60a5fa;
+  --all-info-surface:    rgba(59, 130, 246, 0.15);
+
   /* Aliases for backward compatibility with legacy app styles */
   --bg:         var(--all-bg);
   --surface:    var(--all-surface);
@@ -40,6 +50,16 @@
   --all-accent:     #000000;
   --all-accent-dim: #333333;
   --all-focus-ring: rgba(0, 0, 0, 0.4);
+
+  /* Semantic Intent Tokens */
+  --all-danger:          #dc2626;
+  --all-danger-surface:  rgba(220, 38, 38, 0.08);
+  --all-warning:         #d97706;
+  --all-warning-surface: rgba(217, 119, 6, 0.08);
+  --all-success:         #059669;
+  --all-success-surface: rgba(5, 150, 105, 0.08);
+  --all-info:            #2563eb;
+  --all-info-surface:    rgba(37, 99, 235, 0.08);
 
   --bg:         var(--all-bg);
   --surface:    var(--all-surface);
@@ -68,6 +88,16 @@
   --all-accent-dim: #000000 !important;
   --all-focus-ring: #000000 !important;
 
+  /* Semantic Intent Tokens */
+  --all-danger:          #000000 !important;
+  --all-danger-surface:  #f0f0f0 !important;
+  --all-warning:         #000000 !important;
+  --all-warning-surface: #f0f0f0 !important;
+  --all-success:         #000000 !important;
+  --all-success-surface: #f0f0f0 !important;
+  --all-info:            #000000 !important;
+  --all-info-surface:    #f0f0f0 !important;
+
   --bg:         var(--all-bg);
   --surface:    var(--all-surface);
   --surface-2:  var(--all-surface-2);
@@ -93,6 +123,16 @@
   --all-accent:     #ffffff !important;
   --all-accent-dim: #ffffff !important;
   --all-focus-ring: #ffffff !important;
+
+  /* Semantic Intent Tokens */
+  --all-danger:          #ffffff !important;
+  --all-danger-surface:  #1a1a1a !important;
+  --all-warning:         #ffffff !important;
+  --all-warning-surface: #1a1a1a !important;
+  --all-success:         #ffffff !important;
+  --all-success-surface: #1a1a1a !important;
+  --all-info:            #ffffff !important;
+  --all-info-surface:    #1a1a1a !important;
 
   --bg:         var(--all-bg);
   --surface:    var(--all-surface);

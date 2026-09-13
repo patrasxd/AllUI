@@ -1,0 +1,82 @@
+/* ─── Shared Toggle Component Styles ─── */
+
+.all-toggle-container {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--all-space-3, 12px);
+  font-family: var(--all-font-sans, inherit);
+  user-select: none;
+}
+
+.all-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 44px;
+  height: 24px;
+  padding: 2px;
+  background-color: var(--all-surface-2);
+  border: var(--all-border-width, 1.5px) solid var(--all-border-2);
+  border-radius: 9999px;
+  cursor: pointer;
+  outline: none;
+  flex-shrink: 0;
+  transition:
+    background-color var(--all-duration-fast, 150ms) ease,
+    border-color var(--all-duration-fast, 150ms) ease,
+    box-shadow var(--all-duration-fast, 150ms) ease;
+}
+
+.all-toggle:focus-visible {
+  box-shadow: 0 0 0 3px var(--all-focus-ring);
+}
+
+.all-toggle--checked {
+  background-color: var(--all-accent);
+  border-color: var(--all-accent);
+}
+
+.all-toggle__thumb {
+  width: 18px;
+  height: 18px;
+  background-color: var(--all-text);
+  border-radius: 50%;
+  transition: transform var(--all-duration-fast, 150ms) var(--all-ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+  will-change: transform;
+}
+
+.all-toggle--checked .all-toggle__thumb {
+  transform: translateX(18px);
+  background-color: var(--all-bg);
+}
+
+.all-toggle-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.all-toggle-label {
+  font-size: var(--all-font-size-sm, 0.875rem);
+  font-weight: 500;
+  color: var(--all-text);
+  cursor: pointer;
+}
+
+.all-toggle-desc {
+  font-size: var(--all-font-size-xs, 0.75rem);
+  color: var(--all-text-dim);
+  margin: 0;
+}
+
+.all-toggle-container--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.all-toggle-container--disabled .all-toggle,
+.all-toggle-container--disabled .all-toggle-text {
+  cursor: not-allowed;
+  pointer-events: none;
+}

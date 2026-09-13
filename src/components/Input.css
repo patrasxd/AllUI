@@ -1,0 +1,112 @@
+/* ─── Shared Input Component Styles ─── */
+
+.all-input-container {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--all-space-1, 4px);
+  font-family: var(--all-font-sans, inherit);
+  text-align: left;
+}
+
+.all-input-container--full {
+  width: 100%;
+}
+
+.all-input-label {
+  font-size: var(--all-font-size-xs, 0.75rem);
+  font-weight: 500;
+  color: var(--all-text);
+  user-select: none;
+}
+
+.all-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--all-surface);
+  border: var(--all-border-width, 1.5px) solid var(--all-border-2);
+  border-radius: var(--all-radius, 4px);
+  transition:
+    border-color var(--all-duration-fast, 150ms) ease,
+    box-shadow var(--all-duration-fast, 150ms) ease,
+    background-color var(--all-duration-fast, 150ms) ease;
+}
+
+.all-input-wrapper:hover {
+  border-color: var(--all-text-dim);
+}
+
+.all-input-wrapper:focus-within {
+  border-color: var(--all-accent);
+  box-shadow: 0 0 0 3px var(--all-focus-ring);
+}
+
+.all-input-field {
+  width: 100%;
+  height: 40px;
+  padding: 0 var(--all-space-3, 12px);
+  background: transparent;
+  border: none;
+  color: var(--all-text);
+  font-family: inherit;
+  font-size: var(--all-font-size-sm, 0.875rem);
+  line-height: 1.5;
+  outline: none;
+}
+
+.all-input-field::placeholder {
+  color: var(--all-text-dim);
+  opacity: 0.8;
+}
+
+.all-input-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--all-text-dim);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.all-input-icon--start {
+  padding-left: var(--all-space-3, 12px);
+}
+
+.all-input-icon--end {
+  padding-right: var(--all-space-3, 12px);
+}
+
+.all-input-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Error state */
+.all-input-container--error .all-input-wrapper {
+  border-color: var(--all-danger);
+}
+
+.all-input-container--error .all-input-wrapper:focus-within {
+  box-shadow: 0 0 0 3px var(--all-danger-surface);
+}
+
+.all-input-error {
+  font-size: var(--all-font-size-xs, 0.75rem);
+  color: var(--all-danger);
+  font-weight: 500;
+}
+
+.all-input-helper {
+  font-size: var(--all-font-size-xs, 0.75rem);
+  color: var(--all-text-dim);
+}
+
+/* Disabled state */
+.all-input-container--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.all-input-container--disabled .all-input-field {
+  cursor: not-allowed;
+}

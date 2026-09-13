@@ -1,0 +1,54 @@
+/* ─── Shared Typography Styles ─── */
+
+.all-heading {
+  font-family: var(--all-font-sans, inherit);
+  color: var(--all-text);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.all-heading--h1 { font-size: var(--all-font-size-3xl, 1.875rem); }
+.all-heading--h2 { font-size: var(--all-font-size-2xl, 1.5rem); }
+.all-heading--h3 { font-size: var(--all-font-size-xl, 1.25rem); }
+.all-heading--h4 { font-size: var(--all-font-size-lg, 1.125rem); }
+.all-heading--h5 { font-size: var(--all-font-size-base, 1rem); }
+.all-heading--h6 { font-size: var(--all-font-size-sm, 0.875rem); }
+
+.all-text-elem {
+  font-family: var(--all-font-sans, inherit);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Strict contrast protection: body text MUST always use --all-text (>=15.8:1 contrast) */
+.all-text--body {
+  color: var(--all-text);
+  font-size: var(--all-font-size-base, 1rem);
+}
+
+.all-text--secondary {
+  color: var(--all-text-muted);
+  font-size: var(--all-font-size-sm, 0.875rem);
+}
+
+/* Dim text is restricted strictly to hints/secondary metadata */
+.all-text--dim {
+  color: var(--all-text-dim);
+  font-size: var(--all-font-size-sm, 0.875rem);
+}
+
+.all-text--caption {
+  color: var(--all-text-dim);
+  font-size: var(--all-font-size-xs, 0.75rem);
+}
+
+.all-text--code {
+  font-family: var(--all-font-mono, monospace);
+  font-size: var(--all-font-size-sm, 0.875rem);
+  color: var(--all-text);
+  background-color: var(--all-surface-2);
+  padding: 2px 6px;
+  border-radius: var(--all-radius, 4px);
+  border: var(--all-border-width, 1.5px) solid var(--all-border-2);
+}

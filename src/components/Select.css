@@ -1,0 +1,105 @@
+/* ─── Shared Select Component Styles ─── */
+
+.all-select-container {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--all-space-1, 4px);
+  font-family: var(--all-font-sans, inherit);
+  text-align: left;
+}
+
+.all-select-container--full {
+  width: 100%;
+}
+
+.all-select-label {
+  font-size: var(--all-font-size-xs, 0.75rem);
+  font-weight: 500;
+  color: var(--all-text);
+  user-select: none;
+}
+
+.all-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--all-surface);
+  border: var(--all-border-width, 1.5px) solid var(--all-border-2);
+  border-radius: var(--all-radius, 4px);
+  transition:
+    border-color var(--all-duration-fast, 150ms) ease,
+    box-shadow var(--all-duration-fast, 150ms) ease,
+    background-color var(--all-duration-fast, 150ms) ease;
+}
+
+.all-select-wrapper:hover {
+  border-color: var(--all-text-dim);
+}
+
+.all-select-wrapper:focus-within {
+  border-color: var(--all-accent);
+  box-shadow: 0 0 0 3px var(--all-focus-ring);
+}
+
+.all-select-field {
+  width: 100%;
+  height: 40px;
+  padding: 0 var(--all-space-8, 32px) 0 var(--all-space-3, 12px);
+  background: transparent;
+  border: none;
+  color: var(--all-text);
+  font-family: inherit;
+  font-size: var(--all-font-size-sm, 0.875rem);
+  line-height: 1.5;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.all-select-arrow {
+  position: absolute;
+  right: var(--all-space-3, 12px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--all-text-dim);
+  pointer-events: none;
+}
+
+.all-select-arrow svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Error state */
+.all-select-container--error .all-select-wrapper {
+  border-color: var(--all-danger);
+}
+
+.all-select-container--error .all-select-wrapper:focus-within {
+  box-shadow: 0 0 0 3px var(--all-danger-surface);
+}
+
+.all-select-error {
+  font-size: var(--all-font-size-xs, 0.75rem);
+  color: var(--all-danger);
+  font-weight: 500;
+}
+
+.all-select-helper {
+  font-size: var(--all-font-size-xs, 0.75rem);
+  color: var(--all-text-dim);
+}
+
+/* Disabled state */
+.all-select-container--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.all-select-container--disabled .all-select-field {
+  cursor: not-allowed;
+}

@@ -1,0 +1,55 @@
+/* ─── Shared Card Component Styles ─── */
+
+.all-card {
+  position: relative;
+  background-color: var(--all-surface);
+  color: var(--all-text);
+  border-radius: var(--all-radius-md, 8px);
+  border: var(--all-border-width, 1.5px) solid transparent;
+  transition:
+    background-color var(--all-duration-fast, 150ms) ease,
+    border-color var(--all-duration-fast, 150ms) ease,
+    box-shadow var(--all-duration-fast, 150ms) ease,
+    transform var(--all-duration-fast, 150ms) ease;
+}
+
+/* Padding variants */
+.all-card--pad-none { padding: 0; }
+.all-card--pad-sm   { padding: var(--all-space-3, 12px); }
+.all-card--pad-md   { padding: var(--all-space-4, 16px); }
+.all-card--pad-lg   { padding: var(--all-space-6, 24px); }
+
+/* Appearance variants */
+.all-card--outlined {
+  border-color: var(--all-border);
+}
+
+.all-card--flat {
+  background-color: var(--all-surface-2);
+  border-color: transparent;
+}
+
+.all-card--elevated {
+  border-color: var(--all-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Interactive card */
+.all-card--interactive {
+  cursor: pointer;
+  user-select: none;
+}
+
+.all-card--interactive:hover {
+  border-color: var(--all-border-2);
+  background-color: var(--all-surface-2);
+}
+
+.all-card--interactive:active {
+  transform: scale(0.99);
+}
+
+.all-card--interactive:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--all-focus-ring);
+}
