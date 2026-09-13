@@ -8,3 +8,10 @@ export * from './theme/index'
 
 // Motion Infrastructure
 export * from './motion/index'
+
+// Responsive Layout Templates
+export * from './templates/index'
+
+// Core UI Primitives
+export * from './primitives/index'
+

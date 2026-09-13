@@ -1,0 +1,77 @@
+/* ─── Standardized DPad Geometry Styles ─── */
+
+.all-dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 48px);
+  grid-template-rows: repeat(3, 48px);
+  gap: 6px;
+  user-select: none;
+  touch-action: none;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .all-dpad {
+    grid-template-columns: repeat(3, 56px);
+    grid-template-rows: repeat(3, 56px);
+    gap: 8px;
+  }
+}
+
+.all-dpad__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-width: 48px;
+  min-height: 48px;
+  background: var(--all-surface);
+  border: var(--all-border-width, 1.5px) solid var(--all-border-2);
+  border-radius: var(--all-radius, 4px);
+  color: var(--all-text);
+  cursor: pointer;
+  touch-action: none;
+  transition:
+    background var(--all-duration-fast, 150ms) ease,
+    border-color var(--all-duration-fast, 150ms) ease,
+    transform var(--all-duration-fast, 150ms) ease;
+}
+
+.all-dpad__btn:hover {
+  background: var(--all-surface-2);
+  border-color: var(--all-text-dim);
+}
+
+.all-dpad__btn:active {
+  background: var(--all-border-2);
+  transform: scale(0.94);
+}
+
+.all-dpad__btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Grid placement */
+.all-dpad__btn--up    { grid-column: 2; grid-row: 1; }
+.all-dpad__btn--left  { grid-column: 1; grid-row: 2; }
+.all-dpad__btn--center{ grid-column: 2; grid-row: 2; opacity: 0.3; pointer-events: none; }
+.all-dpad__btn--right { grid-column: 3; grid-row: 2; }
+.all-dpad__btn--down  { grid-column: 2; grid-row: 3; }
+
+[data-eink='true'] .all-dpad__btn {
+  border: 2px solid var(--all-border) !important;
+  background: var(--all-surface) !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+[data-eink='true'] .all-dpad__btn:active {
+  background: var(--all-text) !important;
+  color: var(--all-bg) !important;
+}

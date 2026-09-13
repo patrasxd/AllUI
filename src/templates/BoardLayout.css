@@ -1,0 +1,159 @@
+/* ─── BoardLayout Component Styles ─── */
+
+.all-board-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  min-height: calc(100dvh - var(--all-header-height, 60px));
+  max-height: calc(100dvh - var(--all-header-height, 60px));
+  overflow: hidden;
+  padding: env(safe-area-inset-top, var(--all-space-2))
+           env(safe-area-inset-right, var(--all-space-4))
+           env(safe-area-inset-bottom, var(--all-space-3))
+           env(safe-area-inset-left, var(--all-space-4));
+  box-sizing: border-box;
+  color: var(--all-text);
+}
+
+/* ─── HUD Region (Top) ─── */
+.all-board-layout__hud {
+  width: 100%;
+  max-width: 900px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--all-space-2);
+  z-index: 10;
+}
+
+/* ─── Workspace Area (Board + Side Panel) ─── */
+.all-board-layout__workspace {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: 1200px;
+  gap: var(--all-space-6);
+  position: relative;
+}
+
+/* ─── Board Stage ─── */
+.all-board-layout__board-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Square Board Variant (Chess, Checkers, 2048, Snake, Sudoku, Memory, Crystal Match, Tic-Tac-Toe) */
+.all-board-layout--square .all-board-layout__board-stage {
+  width: min(calc(100vw - 32px), calc(100dvh - 190px), 620px);
+  height: min(calc(100vw - 32px), calc(100dvh - 190px), 620px);
+  aspect-ratio: 1 / 1;
+}
+
+/* Wide / Fluid Board Variant (Minesweeper 30x16, Battleship, Solitaire) */
+.all-board-layout--wide .all-board-layout__board-stage {
+  width: min(calc(100vw - 32px), 940px);
+  max-height: calc(100dvh - 180px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.all-board-layout--fluid .all-board-layout__board-stage {
+  width: 100%;
+  max-width: 1000px;
+  max-height: calc(100dvh - 180px);
+}
+
+/* ─── Side Panel (Desktop Only) ─── */
+.all-board-layout__side-panel {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  max-height: 100%;
+  overflow-y: auto;
+  flex-shrink: 0;
+  background: var(--all-surface);
+  border: var(--all-border-width-sm, 1px) solid var(--all-border);
+  border-radius: var(--all-radius, 4px);
+  padding: var(--all-space-4);
+  box-sizing: border-box;
+}
+
+@media (max-width: 1023px) {
+  .all-board-layout__side-panel {
+    display: none;
+  }
+}
+
+/* ─── Controls Bar (Bottom) ─── */
+.all-board-layout__controls {
+  width: 100%;
+  max-width: 700px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--all-space-3);
+  margin-top: var(--all-space-2);
+  z-index: 10;
+}
+
+/* ─── Mobile Landscape Mode (height < 550px) ─── */
+@media (orientation: landscape) and (max-height: 550px) {
+  .all-board-layout {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    padding: env(safe-area-inset-top, var(--all-space-1))
+             env(safe-area-inset-right, var(--all-space-3))
+             env(safe-area-inset-bottom, var(--all-space-1))
+             env(safe-area-inset-left, var(--all-space-3));
+    gap: var(--all-space-4);
+  }
+
+  .all-board-layout__workspace {
+    flex: 0 0 auto;
+    width: auto;
+    height: 100%;
+  }
+
+  .all-board-layout--square .all-board-layout__board-stage {
+    width: calc(100dvh - 40px);
+    height: calc(100dvh - 40px);
+    max-width: calc(100vw - 220px);
+  }
+
+  /* Right column for HUD + Controls in landscape */
+  .all-board-layout__landscape-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 200px;
+    max-width: 280px;
+    height: 100%;
+    min-width: 160px;
+    gap: var(--all-space-2);
+    overflow-y: auto;
+  }
+
+  .all-board-layout__hud {
+    margin-bottom: 0;
+  }
+
+  .all-board-layout__controls {
+    margin-top: 0;
+    flex-direction: column;
+    gap: var(--all-space-2);
+  }
+}
