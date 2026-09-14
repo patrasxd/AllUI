@@ -1,0 +1,8 @@
+/* ─── ConfirmDialog Component Styles ─── */
+.all-confirm-dialog__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--all-space-2, 0.5rem);
+  width: 100%;
+}
