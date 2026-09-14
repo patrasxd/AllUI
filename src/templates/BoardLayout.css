@@ -7,12 +7,12 @@
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  min-height: calc(100dvh - var(--all-header-height, 60px));
-  max-height: calc(100dvh - var(--all-header-height, 60px));
+  min-height: 0;
+  max-height: 100%;
   overflow: hidden;
   padding: env(safe-area-inset-top, var(--all-space-2))
            env(safe-area-inset-right, var(--all-space-4))
-           env(safe-area-inset-bottom, var(--all-space-3))
+           max(var(--all-space-4, 1rem), env(safe-area-inset-bottom, 0px))
            env(safe-area-inset-left, var(--all-space-4));
   box-sizing: border-box;
   color: var(--all-text);
@@ -33,14 +33,42 @@
 /* ─── Workspace Area (Board + Side Panel) ─── */
 .all-board-layout__workspace {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   min-height: 0;
   width: 100%;
   max-width: 1200px;
   gap: var(--all-space-6);
   position: relative;
+  padding-top: var(--all-space-1, 4px);
+}
+
+/* On desktop viewports with ample height, center board vertically */
+@media (min-width: 768px) {
+  .all-board-layout__workspace {
+    align-items: center;
+    flex: 1 1 auto;
+    padding-top: 0;
+  }
+}
+
+/* ─── In-Workspace Overlay (game-over, pause, intro) ─── */
+/* No scrim — card floats directly over the board with zero darkening or tint. */
+.all-board-layout__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--all-space-4, 16px);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.all-board-layout__overlay > * {
+  pointer-events: auto;
 }
 
 /* ─── Board Stage ─── */
@@ -55,9 +83,16 @@
 
 /* Square Board Variant (Chess, Checkers, 2048, Snake, Sudoku, Memory, Crystal Match, Tic-Tac-Toe) */
 .all-board-layout--square .all-board-layout__board-stage {
-  width: min(calc(100vw - 32px), calc(100dvh - 190px), 620px);
-  height: min(calc(100vw - 32px), calc(100dvh - 190px), 620px);
+  width: min(calc(100vw - 32px), calc(50dvh), 420px);
+  height: min(calc(100vw - 32px), calc(50dvh), 420px);
   aspect-ratio: 1 / 1;
+}
+
+@media (min-width: 768px) {
+  .all-board-layout--square .all-board-layout__board-stage {
+    width: min(calc(100vw - 32px), calc(100dvh - 220px), 620px);
+    height: min(calc(100vw - 32px), calc(100dvh - 220px), 620px);
+  }
 }
 
 /* Wide / Fluid Board Variant (Minesweeper 30x16, Battleship, Solitaire) */
@@ -100,59 +135,71 @@
 .all-board-layout__controls {
   width: 100%;
   max-width: 700px;
-  flex-shrink: 0;
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--all-space-3);
   margin-top: var(--all-space-2);
+  margin-bottom: 0;
   z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .all-board-layout__controls {
+    flex: 0 0 auto;
+    flex-direction: row;
+  }
 }
 
 /* ─── Mobile Landscape Mode (height < 550px) ─── */
 @media (orientation: landscape) and (max-height: 550px) {
   .all-board-layout {
-    flex-direction: row;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "stage hud"
+      "stage controls";
+    align-items: center;
     justify-content: center;
     padding: env(safe-area-inset-top, var(--all-space-1))
              env(safe-area-inset-right, var(--all-space-3))
              env(safe-area-inset-bottom, var(--all-space-1))
              env(safe-area-inset-left, var(--all-space-3));
-    gap: var(--all-space-4);
+    gap: var(--all-space-2);
+    column-gap: var(--all-space-4);
   }
 
   .all-board-layout__workspace {
+    grid-area: stage;
     flex: 0 0 auto;
     width: auto;
     height: 100%;
+    align-items: center;
+    padding-top: 0;
   }
 
   .all-board-layout--square .all-board-layout__board-stage {
-    width: calc(100dvh - 40px);
-    height: calc(100dvh - 40px);
-    max-width: calc(100vw - 220px);
-  }
-
-  /* Right column for HUD + Controls in landscape */
-  .all-board-layout__landscape-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1 1 200px;
-    max-width: 280px;
-    height: 100%;
-    min-width: 160px;
-    gap: var(--all-space-2);
-    overflow-y: auto;
+    width: calc(100dvh - 44px);
+    height: calc(100dvh - 44px);
+    max-width: calc(100vw - 240px);
   }
 
   .all-board-layout__hud {
+    grid-area: hud;
     margin-bottom: 0;
+    justify-self: center;
+    align-self: end;
   }
 
   .all-board-layout__controls {
+    grid-area: controls;
     margin-top: 0;
+    justify-self: center;
+    align-self: start;
     flex-direction: column;
     gap: var(--all-space-2);
   }

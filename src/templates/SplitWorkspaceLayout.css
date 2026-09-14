@@ -10,7 +10,7 @@
   overflow: hidden;
   padding: env(safe-area-inset-top, var(--all-space-2))
            env(safe-area-inset-right, var(--all-space-4))
-           env(safe-area-inset-bottom, var(--all-space-2))
+           max(var(--all-space-4, 1rem), env(safe-area-inset-bottom, 0px))
            env(safe-area-inset-left, var(--all-space-4));
   box-sizing: border-box;
   color: var(--all-text);
@@ -126,6 +126,7 @@
   align-items: center;
   justify-content: space-between;
   margin-top: var(--all-space-2);
+  margin-bottom: 0;
   flex-shrink: 0;
   font-family: var(--all-font-mono);
   font-size: var(--all-text-xs, 0.625rem);
