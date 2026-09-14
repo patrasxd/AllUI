@@ -28,5 +28,28 @@ describe('BoardLayout', () => {
 
     rerender(<BoardLayout board={<div>Wide Board</div>} variant="wide" />)
     expect(container.firstChild).toHaveClass('all-board-layout--wide')
+    expect(container.firstChild).toHaveClass('all-board-layout--align-top')
+  })
+
+  it('renders dedicated dpad slot and toggle button when dpad is present', () => {
+    const { container } = render(
+      <BoardLayout
+        board={<div>Snake Board</div>}
+        dpad={<div data-testid="touch-dpad">D-PAD</div>}
+        controls={<button type="button">Pause</button>}
+      />
+    )
+
+    expect(screen.getByTestId('touch-dpad')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Pause' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /D-Pad/i })).toBeInTheDocument()
+    expect(container.firstChild).toHaveClass('all-board-layout--has-dpad')
+  })
+
+  it('honors explicit align prop', () => {
+    const { container } = render(
+      <BoardLayout board={<div>Board</div>} align="center" variant="wide" />
+    )
+    expect(container.firstChild).toHaveClass('all-board-layout--align-center')
   })
 })
