@@ -77,9 +77,54 @@
 }
 
 /* E-Ink Support */
+[data-theme^='e-ink'] .all-header,
+[data-theme^='e-ink'] .header,
 [data-eink='true'] .all-header,
 [data-eink='true'] .header {
   background-color: var(--all-bg, var(--bg, #ffffff)) !important;
   backdrop-filter: none !important;
   border-bottom: var(--all-border-width, 2px) solid var(--all-border, var(--border, #000000)) !important;
 }
+
+/* ─── Narrow Mobile Layout Compacting ─── */
+@media (max-width: 420px) {
+  .all-header,
+  .header {
+    height: 56px;
+  }
+
+  .all-header__inner,
+  .header-inner {
+    gap: var(--all-space-1, 4px);
+  }
+
+  .all-header__left,
+  .header-left-group {
+    gap: var(--all-space-1, 4px);
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .all-header__title,
+  .header-game-title,
+  .header-tool-title {
+    max-width: 4.8rem;
+    font-size: 0.75rem;
+    padding-left: var(--all-space-1, 4px);
+  }
+
+  .all-header__right,
+  .header-actions {
+    max-width: 75%;
+    gap: var(--all-space-1, 4px);
+    overflow: visible;
+  }
+
+  .all-header__actions,
+  .header-game-stats,
+  .header-tool-stats {
+    max-width: calc(100% - 34px);
+    overflow: visible;
+  }
+}
+
