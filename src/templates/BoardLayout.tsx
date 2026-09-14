@@ -8,6 +8,7 @@ export function BoardLayout({
   hud,
   controls,
   sidePanel,
+  overlay,
   variant = 'square',
   className = '',
   style,
@@ -30,6 +31,12 @@ export function BoardLayout({
           <aside className="all-board-layout__side-panel">
             {sidePanel}
           </aside>
+        )}
+
+        {overlay && (
+          <div className="all-board-layout__overlay" aria-live="polite">
+            {overlay}
+          </div>
         )}
       </div>
 

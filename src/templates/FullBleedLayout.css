@@ -28,6 +28,24 @@
   z-index: 1;
 }
 
+/* ─── In-Canvas Overlay (dialogs, intros, alerts) ─── */
+/* No scrim — card floats directly over the canvas with zero darkening or tint. */
+.all-fullbleed-layout__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--all-space-4, 16px);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.all-fullbleed-layout__overlay > * {
+  pointer-events: auto;
+}
+
 /* ─── Floating Toolbar ─── */
 .all-fullbleed-layout__floating-toolbar {
   position: absolute;
@@ -72,7 +90,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--all-space-2);
-  padding: var(--all-space-3) var(--all-space-4);
+  padding: var(--all-space-3) var(--all-space-4) max(var(--all-space-4, 1rem), calc(var(--all-space-2, 0.5rem) + env(safe-area-inset-bottom, 0px)));
   background: transparent;
   box-sizing: border-box;
   z-index: 10;
@@ -86,7 +104,7 @@
 /* ─── Floating Bottom Status / Bar ─── */
 .all-fullbleed-layout__status-bar {
   position: absolute;
-  bottom: env(safe-area-inset-bottom, var(--all-space-4));
+  bottom: max(var(--all-space-4, 1rem), env(safe-area-inset-bottom, 0px));
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;

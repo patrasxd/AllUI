@@ -12,7 +12,7 @@
   overflow: hidden;
   padding: env(safe-area-inset-top, var(--all-space-4))
            env(safe-area-inset-right, var(--all-space-4))
-           env(safe-area-inset-bottom, var(--all-space-4))
+           max(var(--all-space-4, 1rem), env(safe-area-inset-bottom, 0px))
            env(safe-area-inset-left, var(--all-space-4));
   box-sizing: border-box;
   color: var(--all-text);
@@ -30,11 +30,19 @@
 
 .all-centered-layout__stage {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex: 1 1 auto;
   min-height: 0;
   width: 100%;
+  padding-top: var(--all-space-2, 8px);
+}
+
+@media (min-width: 768px) {
+  .all-centered-layout__stage {
+    align-items: center;
+    padding-top: 0;
+  }
 }
 
 .all-centered-layout__card {
@@ -67,6 +75,7 @@
   justify-content: center;
   gap: var(--all-space-3);
   margin-top: var(--all-space-2);
+  margin-bottom: 0;
 }
 
 .all-centered-layout__footer {

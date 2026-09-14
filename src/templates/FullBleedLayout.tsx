@@ -8,6 +8,7 @@ export function FullBleedLayout({
   footer,
   statusBar,
   toolbarPosition = 'top',
+  overlay,
   className = '',
 }: FullBleedLayoutProps) {
   return (
@@ -22,7 +23,14 @@ export function FullBleedLayout({
       )}
 
       {/* Full-Bleed Canvas Workspace */}
-      <main className="all-fullbleed-layout__canvas-area">{children}</main>
+      <main className="all-fullbleed-layout__canvas-area">
+        {children}
+        {overlay && (
+          <div className="all-fullbleed-layout__overlay" aria-live="polite">
+            {overlay}
+          </div>
+        )}
+      </main>
 
       {/* Static Controls Footer — sits below the canvas, does not overlay */}
       {footer && (

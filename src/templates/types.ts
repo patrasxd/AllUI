@@ -8,6 +8,9 @@ export interface BoardLayoutProps {
   hud?: React.ReactNode
   controls?: React.ReactNode
   sidePanel?: React.ReactNode
+  /** In-board overlay: covers the workspace area (board + side panel).
+   *  Rendered with pointer-events: none, transparent background (no scrim). */
+  overlay?: React.ReactNode
   variant?: BoardVariant
   className?: string
   style?: React.CSSProperties
@@ -42,5 +45,8 @@ export interface FullBleedLayoutProps {
   footer?: React.ReactNode
   statusBar?: React.ReactNode
   toolbarPosition?: 'top' | 'bottom'
+  /** In-canvas overlay: covers the full-bleed canvas area only (not footer or toolbar).
+   *  Rendered with pointer-events: none, transparent background (no scrim). */
+  overlay?: React.ReactNode
   className?: string
 }
