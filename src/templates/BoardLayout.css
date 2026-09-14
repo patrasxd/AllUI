@@ -10,10 +10,10 @@
   min-height: 0;
   max-height: 100%;
   overflow: hidden;
-  padding: env(safe-area-inset-top, var(--all-space-2))
-           env(safe-area-inset-right, var(--all-space-4))
+  padding: env(safe-area-inset-top, var(--all-space-2, 0.5rem))
+           env(safe-area-inset-right, var(--all-space-4, 1rem))
            max(var(--all-space-4, 1rem), env(safe-area-inset-bottom, 0px))
-           env(safe-area-inset-left, var(--all-space-4));
+           env(safe-area-inset-left, var(--all-space-4, 1rem));
   box-sizing: border-box;
   color: var(--all-text);
 }
@@ -26,21 +26,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--all-space-2);
+  margin-bottom: var(--all-space-2, 0.5rem);
   z-index: 10;
 }
 
 /* ─── Workspace Area (Board + Side Panel) ─── */
 .all-board-layout__workspace {
   display: flex;
-  align-items: center;
   justify-content: center;
   flex: 1 1 auto;
   min-height: 0;
   width: 100%;
   max-width: 1200px;
-  gap: var(--all-space-6);
+  gap: var(--all-space-6, 1.5rem);
   position: relative;
+}
+
+/* Alignment: Center (Square games without D-Pad: Checkers, Chess, Tic-Tac-Toe, Crystal Match, Memory) */
+.all-board-layout--align-center .all-board-layout__workspace {
+  align-items: center;
+}
+
+/* Alignment: Top (Solitaire, Stacking cards, Wide boards, Games with D-Pad) */
+.all-board-layout--align-top .all-board-layout__workspace {
+  align-items: flex-start;
+  padding-top: var(--all-space-1, 0.25rem);
 }
 
 /* ─── In-Workspace Overlay (game-over, pause, intro) ─── */
@@ -71,26 +81,37 @@
   max-height: 100%;
 }
 
-/* Square Board Variant (Chess, Checkers, 2048, Snake, Sudoku, Memory, Crystal Match, Tic-Tac-Toe) */
-.all-board-layout--square .all-board-layout__board-stage {
-  width: min(calc(100vw - 32px), calc(100dvh - 240px), 620px);
-  height: min(calc(100vw - 32px), calc(100dvh - 240px), 620px);
+/* Square Board Variant WITHOUT D-Pad (Chess, Checkers, Tic-Tac-Toe, Crystal Match, Memory) */
+.all-board-layout--square:not(.all-board-layout--has-dpad) .all-board-layout__board-stage {
+  width: min(calc(100vw - 32px), calc(100dvh - 220px), 620px);
+  height: min(calc(100vw - 32px), calc(100dvh - 220px), 620px);
   aspect-ratio: 1 / 1;
 }
 
-/* Wide / Fluid Board Variant (Minesweeper 30x16, Battleship, Solitaire) */
-.all-board-layout--wide .all-board-layout__board-stage {
-  width: min(calc(100vw - 32px), 940px);
-  max-height: calc(100dvh - 180px);
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
+/* Square Board Variant WITH D-Pad (Snake, 2048) — sized so board + dpad + controls fit without scroll */
+.all-board-layout--has-dpad .all-board-layout__board-stage {
+  width: min(calc(100vw - 32px), calc(100dvh - 380px), 440px);
+  height: min(calc(100vw - 32px), calc(100dvh - 380px), 440px);
+  aspect-ratio: 1 / 1;
+}
+
+/* Wide / Fluid / Stacked Board Variant (Solitaire, Minesweeper 30x16, Battleship) */
+.all-board-layout--wide .all-board-layout__board-stage,
+.all-board-layout--stacked .all-board-layout__board-stage {
+  width: 100%;
+  max-width: 940px;
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto;
 }
 
 .all-board-layout--fluid .all-board-layout__board-stage {
   width: 100%;
   max-width: 1000px;
-  max-height: calc(100dvh - 180px);
+  max-height: 100%;
 }
 
 /* ─── Side Panel (Desktop Only) ─── */
@@ -114,23 +135,51 @@
   }
 }
 
-/* ─── Controls Bar (Always pinned at Bottom) ─── */
+/* ─── D-Pad Region (Snake, 2048) ─── */
+.all-board-layout__dpad {
+  width: 100%;
+  max-width: 440px;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+/* ─── Controls Bar (Always pinned at Bottom in the exact same spot) ─── */
 .all-board-layout__controls {
   width: 100%;
-  max-width: 700px;
+  max-width: 100%;
   flex: 0 0 auto;
   min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: var(--all-space-2, 0.5rem);
-  margin-top: auto;
+  margin-top: var(--all-space-3, 0.75rem);
   margin-bottom: 0;
   z-index: 10;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
+  .all-board-layout__dpad {
+    display: none;
+  }
+
+  .all-board-layout--has-dpad .all-board-layout__board-stage {
+    width: min(calc(100vw - 32px), calc(100dvh - 220px), 620px);
+    height: min(calc(100vw - 32px), calc(100dvh - 220px), 620px);
+  }
+
+  .all-board-layout--has-dpad .all-board-layout__workspace {
+    align-items: center;
+    padding-top: 0;
+  }
+
   .all-board-layout__controls {
     flex-direction: row;
     justify-content: center;

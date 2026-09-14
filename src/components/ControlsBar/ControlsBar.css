@@ -2,20 +2,24 @@
 
 .all-controls-bar {
   display: flex;
-  gap: var(--all-space-3, 0.625rem);
+  gap: var(--all-space-2, 0.5rem);
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  flex-shrink: 0;
-  width: auto;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Backward compatibility binding */
 .game-controls-bar {
   display: flex;
-  gap: 0.625rem;
+  gap: var(--all-space-2, 0.5rem);
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
+

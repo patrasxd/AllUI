@@ -90,7 +90,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--all-space-2);
-  padding: var(--all-space-3) var(--all-space-4) max(var(--all-space-4, 1rem), env(safe-area-inset-bottom, 0px));
+  padding: var(--all-space-4, 1rem) var(--all-space-4) max(var(--all-space-4, 1rem), env(safe-area-inset-bottom, 0px));
   background: transparent;
   box-sizing: border-box;
   z-index: 10;
