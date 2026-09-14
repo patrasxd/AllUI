@@ -71,6 +71,7 @@ export function ConfirmDialog({
       title={title}
       description={description}
       maxWidth={maxWidth}
+      showCloseButton={false}
       className={`all-confirm-dialog ${className}`.trim()}
       footer={
         <div className="all-confirm-dialog__actions">

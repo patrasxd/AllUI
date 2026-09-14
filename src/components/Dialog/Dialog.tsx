@@ -164,7 +164,7 @@ export function Dialog({
           </div>
         )}
 
-        <div className="all-dialog__body">{children}</div>
+        {children && <div className="all-dialog__body">{children}</div>}
         {footer && <DialogFooter>{footer}</DialogFooter>}
       </div>
     </div>
