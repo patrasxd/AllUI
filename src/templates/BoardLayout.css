@@ -33,24 +33,14 @@
 /* ─── Workspace Area (Board + Side Panel) ─── */
 .all-board-layout__workspace {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   min-height: 0;
   width: 100%;
   max-width: 1200px;
   gap: var(--all-space-6);
   position: relative;
-  padding-top: var(--all-space-1, 4px);
-}
-
-/* On desktop viewports with ample height, center board vertically */
-@media (min-width: 768px) {
-  .all-board-layout__workspace {
-    align-items: center;
-    flex: 1 1 auto;
-    padding-top: 0;
-  }
 }
 
 /* ─── In-Workspace Overlay (game-over, pause, intro) ─── */
@@ -83,16 +73,9 @@
 
 /* Square Board Variant (Chess, Checkers, 2048, Snake, Sudoku, Memory, Crystal Match, Tic-Tac-Toe) */
 .all-board-layout--square .all-board-layout__board-stage {
-  width: min(calc(100vw - 32px), calc(50dvh), 420px);
-  height: min(calc(100vw - 32px), calc(50dvh), 420px);
+  width: min(calc(100vw - 32px), calc(100dvh - 240px), 620px);
+  height: min(calc(100vw - 32px), calc(100dvh - 240px), 620px);
   aspect-ratio: 1 / 1;
-}
-
-@media (min-width: 768px) {
-  .all-board-layout--square .all-board-layout__board-stage {
-    width: min(calc(100vw - 32px), calc(100dvh - 220px), 620px);
-    height: min(calc(100vw - 32px), calc(100dvh - 220px), 620px);
-  }
 }
 
 /* Wide / Fluid Board Variant (Minesweeper 30x16, Battleship, Solitaire) */
@@ -131,26 +114,26 @@
   }
 }
 
-/* ─── Controls Bar (Bottom) ─── */
+/* ─── Controls Bar (Always pinned at Bottom) ─── */
 .all-board-layout__controls {
   width: 100%;
   max-width: 700px;
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: var(--all-space-3);
-  margin-top: var(--all-space-2);
+  justify-content: flex-end;
+  gap: var(--all-space-2, 0.5rem);
+  margin-top: auto;
   margin-bottom: 0;
   z-index: 10;
 }
 
 @media (min-width: 768px) {
   .all-board-layout__controls {
-    flex: 0 0 auto;
     flex-direction: row;
+    justify-content: center;
   }
 }
 
@@ -179,7 +162,6 @@
     width: auto;
     height: 100%;
     align-items: center;
-    padding-top: 0;
   }
 
   .all-board-layout--square .all-board-layout__board-stage {
