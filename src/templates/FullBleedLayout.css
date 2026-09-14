@@ -28,8 +28,8 @@
   z-index: 1;
 }
 
-/* ─── In-Canvas Overlay (game-over, pause, intro) ─── */
-/* No scrim — card floats directly over the game canvas with zero darkening or tint. */
+/* ─── In-Canvas Overlay (dialogs, intros, alerts) ─── */
+/* No scrim — card floats directly over the canvas with zero darkening or tint. */
 .all-fullbleed-layout__overlay {
   position: absolute;
   inset: 0;
@@ -45,7 +45,6 @@
 .all-fullbleed-layout__overlay > * {
   pointer-events: auto;
 }
-
 
 /* ─── Floating Toolbar ─── */
 .all-fullbleed-layout__floating-toolbar {
@@ -91,7 +90,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--all-space-2);
-  padding: var(--all-space-3) var(--all-space-4) max(var(--all-space-4, 1rem), calc(var(--all-space-2, 0.5rem) + env(safe-area-inset-bottom, 0px)));
+  padding: var(--all-space-3) var(--all-space-4) max(var(--all-space-4, 1rem), env(safe-area-inset-bottom, 0px));
   background: transparent;
   box-sizing: border-box;
   z-index: 10;

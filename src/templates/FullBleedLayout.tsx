@@ -7,8 +7,8 @@ export function FullBleedLayout({
   floatingToolbar,
   footer,
   statusBar,
-  overlay,
   toolbarPosition = 'top',
+  overlay,
   className = '',
 }: FullBleedLayoutProps) {
   return (
