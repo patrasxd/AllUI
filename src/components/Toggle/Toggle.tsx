@@ -5,6 +5,7 @@ export interface ToggleProps {
   checked: boolean
   onChange: (checked: boolean) => void
   label?: string
+  'aria-label'?: string
   description?: string
   disabled?: boolean
   id?: string
@@ -15,6 +16,7 @@ export function Toggle({
   checked,
   onChange,
   label,
+  'aria-label': ariaLabel,
   description,
   disabled = false,
   id: explicitId,
@@ -45,6 +47,7 @@ export function Toggle({
         id={id}
         role="switch"
         aria-checked={checked}
+        aria-label={ariaLabel || label}
         aria-describedby={descId}
         disabled={disabled}
         className={`all-toggle ${checked ? 'all-toggle--checked' : ''}`}

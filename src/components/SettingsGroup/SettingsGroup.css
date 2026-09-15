@@ -1,0 +1,30 @@
+.all-settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--all-spacing-xs);
+  width: 100%;
+}
+
+.all-settings-group__label {
+  font-size: var(--all-font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--all-color-text-secondary);
+}
+
+.all-settings-group__content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.all-settings-group__content .all-pill-group {
+  width: 100%;
+}
+
+.all-settings-group__content .all-pill-btn {
+  flex: 1 1 0;
+  justify-content: center;
+  text-align: center;
+}

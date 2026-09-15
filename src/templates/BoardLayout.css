@@ -227,3 +227,138 @@
     gap: var(--all-space-2);
   }
 }
+
+/* ─── BoardLayout Settings Dialog & Groups ─── */
+.all-board-layout__settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--all-space-4, 1.25rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.all-board-layout__settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--all-space-2, 0.5rem);
+  width: 100%;
+}
+
+.all-board-layout__settings-group .all-pill-group {
+  width: 100%;
+  display: flex;
+  justify-content: stretch;
+}
+
+.all-board-layout__settings-group .all-pill-btn {
+  flex: 1 1 0;
+  text-align: center;
+  justify-content: center;
+}
+
+.all-board-layout__settings-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--all-space-1, 0.25rem) 0;
+  box-sizing: border-box;
+}
+
+.all-board-layout__settings-label {
+  font-size: var(--all-font-size-sm, 0.875rem);
+  font-weight: 500;
+  color: var(--all-text);
+}
+
+.all-board-layout__settings-btn {
+  flex-shrink: 0;
+}
+
+/* Mobile-only visibility rule for settings button:
+   - On desktop (>= 768px), always hidden because controls are inline in the controls bar.
+   - On mobile (< 768px), only shown when D-Pad is active, because D-Pad collapses the bottom controls into the modal.
+     When D-Pad is turned off, the controls appear directly at the bottom, so the top-right settings button is hidden! */
+@media (min-width: 768px) {
+  .all-board-layout__settings-btn--mobile-only {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .all-board-layout:not(.all-board-layout--has-dpad) .all-board-layout__settings-btn--mobile-only {
+    display: none !important;
+  }
+}
+
+/* Secondary settings inline in controls bar */
+.all-board-layout__desktop-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--all-space-2, 0.5rem);
+  width: 100%;
+}
+
+.all-board-layout__desktop-setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.all-board-layout__desktop-setting-item .all-pill-group {
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .all-board-layout__desktop-settings {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--all-space-3, 0.75rem);
+    width: auto;
+  }
+
+  .all-board-layout__desktop-setting-item {
+    width: auto;
+  }
+}
+
+/* On mobile, only collapse secondary settings and D-Pad toggle when D-Pad is active.
+   When D-Pad is turned off, the buttons appear again directly in the controls bar! */
+@media (max-width: 767px) {
+  .all-board-layout--has-dpad .all-board-layout__desktop-settings,
+  .all-board-layout--has-dpad .all-board-layout__desktop-dpad-toggle {
+    display: none !important;
+  }
+}
+
+/* D-Pad toggle button in controls bar (proportioned to match PillGroup size) */
+.all-board-layout__dpad-toggle {
+  height: 30px !important;
+  min-height: 30px !important;
+  padding: 0 var(--all-space-3, 10px) !important;
+  font-size: var(--all-font-size-xs, 0.75rem) !important;
+  font-weight: 500 !important;
+  gap: var(--all-space-1, 4px) !important;
+  border-radius: var(--all-radius, 4px) !important;
+  background-color: var(--all-surface-2) !important;
+  border: 1px solid var(--all-border-2) !important;
+  color: var(--all-text) !important;
+  box-sizing: border-box !important;
+}
+
+.all-board-layout__dpad-toggle:hover:not(:disabled) {
+  background-color: var(--all-border) !important;
+  border-color: var(--all-text-dim) !important;
+}
+
+@media (min-width: 768px) {
+  /* On desktop devices with physical keyboards, hide on-screen D-Pad toggle */
+  .all-board-layout__dpad-toggle {
+    display: none !important;
+  }
+}
+

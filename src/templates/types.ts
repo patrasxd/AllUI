@@ -2,6 +2,12 @@ import React from 'react'
 
 export type BoardVariant = 'square' | 'wide' | 'fluid' | 'stacked'
 
+export interface BoardLayoutSettingGroup {
+  id?: string
+  label?: string
+  control: React.ReactNode
+}
+
 export interface BoardLayoutProps {
   children?: React.ReactNode
   board?: React.ReactNode
@@ -15,6 +21,23 @@ export interface BoardLayoutProps {
   allowDpadToggle?: boolean
   /** Label for the D-Pad toggle button, defaults to 'D-Pad' */
   dpadToggleLabel?: string
+  /** Text shown when D-Pad is active in settings modal, defaults to 'On' */
+  dpadActiveLabel?: string
+  /** Text shown when D-Pad is inactive in settings modal, defaults to 'Off' */
+  dpadInactiveLabel?: string
+  /** Secondary settings content rendered inside an accessible Dialog on mobile, and inline in controls bar on desktop.
+   *  Can be a custom ReactNode or an array of BoardLayoutSettingGroup. */
+  settings?: React.ReactNode | BoardLayoutSettingGroup[]
+  /** Title for the settings dialog, defaults to 'Settings' */
+  settingsTitle?: string
+  /** Accessible label and tooltip for the settings button, defaults to 'Settings' */
+  settingsAriaLabel?: string
+  /** Custom ID for the settings button, defaults to 'all-board-layout-settings-btn' */
+  settingsButtonId?: string
+  /** Optional controlled state for settings dialog open status */
+  isSettingsOpen?: boolean
+  /** Callback fired when settings dialog open status changes */
+  onSettingsOpenChange?: (open: boolean) => void
   sidePanel?: React.ReactNode
   /** In-board overlay: covers the workspace area (board + side panel).
    *  Rendered with pointer-events: none, transparent background (no scrim). */

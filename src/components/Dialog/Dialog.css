@@ -40,8 +40,8 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--all-space-4, 16px);
-  padding: var(--all-space-4, 16px) var(--all-space-5, 20px);
-  border-bottom: var(--all-border-width, 1.5px) solid var(--all-border-2);
+  padding: var(--all-space-4, 16px) var(--all-space-5, 20px) var(--all-space-2, 8px);
+  border-bottom: none;
 }
 
 .all-dialog__header-content {

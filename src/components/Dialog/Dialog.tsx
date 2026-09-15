@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useId } from 'react'
 import { createPortal } from 'react-dom'
 import { IconButton } from '../IconButton'
+import { CloseIcon } from '../icons'
 import './Dialog.css'
 
 export interface DialogProps {
@@ -153,12 +154,7 @@ export function Dialog({
                 size="sm"
                 className="all-dialog__close"
                 onClick={handleClose}
-                icon={
-                  <svg viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none">
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                }
+                icon={<CloseIcon width="16" height="16" />}
               />
             )}
           </div>

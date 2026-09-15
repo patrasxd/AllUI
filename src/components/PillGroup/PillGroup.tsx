@@ -44,6 +44,7 @@ export function PillGroup<T = string>({
             type="button"
             id={opt.id || `pill-btn-${String(opt.value)}`}
             className={`all-pill-btn ${isActive ? 'all-pill-btn--active' : ''}`}
+            aria-pressed={isActive}
             onClick={() => onChange(opt.value)}
           >
             {opt.icon && (

@@ -15,6 +15,7 @@
   user-select: none;
   border-radius: var(--all-radius, 4px);
   border: var(--all-border-width, 1.5px) solid transparent;
+  box-sizing: border-box;
   transition:
     background-color var(--all-duration-fast, 150ms) ease,
     border-color var(--all-duration-fast, 150ms) ease,
