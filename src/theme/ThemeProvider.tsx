@@ -36,6 +36,14 @@ export function ThemeProvider({
     root.setAttribute('data-theme', theme)
     root.setAttribute('data-all-theme', theme)
 
+    // Remove any inline style properties that could override CSS theme tokens
+    root.style.removeProperty('background-color')
+    root.style.removeProperty('color')
+    if (document.body) {
+      document.body.style.removeProperty('background-color')
+      document.body.style.removeProperty('color')
+    }
+
     // Legacy E-Ink attribute for backward compatibility
     if (isEink) {
       root.setAttribute('data-eink', 'true')
