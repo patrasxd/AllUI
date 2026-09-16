@@ -35,21 +35,36 @@
 }
 
 /* Sizing aligned with Button.css (sm: 32px total, md: 40px total, lg: 48px total) */
+.all-pill-group--sm {
+  height: 32px;
+  box-sizing: border-box;
+}
+
 .all-pill-group--sm .all-pill-btn,
 .game-pill-group .game-pill-btn {
-  height: 26px;
+  height: 100%;
   padding: 0 var(--all-space-3, 12px);
   font-size: var(--all-font-size-xs, 0.75rem);
 }
 
+.all-pill-group--md {
+  height: 40px;
+  box-sizing: border-box;
+}
+
 .all-pill-group--md .all-pill-btn {
-  height: 34px;
+  height: 100%;
   padding: 0 var(--all-space-4, 16px);
   font-size: var(--all-font-size-sm, 0.875rem);
 }
 
+.all-pill-group--lg {
+  height: 48px;
+  box-sizing: border-box;
+}
+
 .all-pill-group--lg .all-pill-btn {
-  height: 42px;
+  height: 100%;
   padding: 0 var(--all-space-6, 24px);
   font-size: var(--all-font-size-base, 1rem);
 }

@@ -40,7 +40,10 @@ export function BoardLayout({
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      setTopActionsNode(document.getElementById('game-page-top-actions'))
+      setTopActionsNode(
+        document.getElementById('tool-page-top-actions') ||
+        document.getElementById('game-page-top-actions')
+      )
     }
   }, [])
 
