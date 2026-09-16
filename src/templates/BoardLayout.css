@@ -40,6 +40,7 @@
   max-width: 1200px;
   gap: var(--all-space-6, 1.5rem);
   position: relative;
+  overflow: hidden;
 }
 
 /* Alignment: Center (Square games without D-Pad: Checkers, Chess, Tic-Tac-Toe, Crystal Match, Memory) */
@@ -79,6 +80,7 @@
   position: relative;
   max-width: 100%;
   max-height: 100%;
+  min-height: 0;
 }
 
 /* Square Board Variant WITHOUT D-Pad (Chess, Checkers, Tic-Tac-Toe, Crystal Match, Memory) */
@@ -102,6 +104,7 @@
   max-width: 940px;
   height: 100%;
   max-height: 100%;
+  min-height: 0;
   display: flex;
   justify-content: center;
   align-items: flex-start;
