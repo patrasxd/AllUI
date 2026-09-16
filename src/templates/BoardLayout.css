@@ -112,6 +112,10 @@
   width: 100%;
   max-width: 1000px;
   max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 /* ─── Side Panel (Desktop Only) ─── */
