@@ -14,7 +14,7 @@
     "./primitives": "./src/primitives/index.ts",
     "./components": "./src/components/index.ts",
     "./templates": "./src/templates/index.ts",
-    "./icons": "./src/icons/index.ts",
+    "./icons": "./src/components/icons/index.ts",
     "./theme": "./src/theme/index.ts"
   },
   "scripts": {

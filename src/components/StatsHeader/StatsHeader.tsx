@@ -9,7 +9,7 @@ export interface StatItem {
 }
 
 export interface StatsHeaderProps {
-  label: string
+  label?: string
   items: StatItem[]
   onReset?: () => void
   resetAriaLabel?: string
@@ -30,7 +30,7 @@ export const StatsHeader = memo(function StatsHeader({
 }: StatsHeaderProps) {
   return (
     <div className={`all-stats-header game-stats-header tool-stats-header ${className}`.trim()}>
-      <p className="all-stats-header__label game-stats-header-label tool-stats-header-label">{label}</p>
+      {label && <p className="all-stats-header__label game-stats-header-label tool-stats-header-label">{label}</p>}
       <div className="all-stats-header__row game-stats-header-row tool-stats-header-row">
         {items.map((item, idx) => (
           <span key={item.key} className="all-stats-header__entry" style={{ display: 'inline-flex', alignItems: 'baseline', gap: '0.4rem' }}>
