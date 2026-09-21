@@ -21,4 +21,5 @@ export * from './utils/index'
 
 // Shared Hooks
 export * from './hooks/usePWAInstall'
+export * from './hooks/useCardScrollRestoration'
 
