@@ -43,9 +43,14 @@
   overflow: hidden;
 }
 
-/* Alignment: Center (Square games without D-Pad: Checkers, Chess, Tic-Tac-Toe, Crystal Match, Memory) */
+/* Alignment: Center (Centered boards, utilities and games without D-Pad) */
 .all-board-layout--align-center .all-board-layout__workspace {
   align-items: center;
+}
+
+.all-board-layout--align-center .all-board-layout__board-stage {
+  align-items: center;
+  justify-content: center;
 }
 
 /* Alignment: Top (Solitaire, Stacking cards, Wide boards, Games with D-Pad) */

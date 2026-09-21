@@ -6,11 +6,9 @@
 }
 
 .all-settings-group__label {
-  font-size: var(--all-font-size-xs);
+  font-size: var(--all-font-size-sm, 0.8125rem);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--all-color-text-secondary);
+  color: var(--all-color-text-secondary, var(--all-text-dim));
 }
 
 .all-settings-group__content {
