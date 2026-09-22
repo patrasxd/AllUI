@@ -16,6 +16,15 @@
   --all-text-2xl:  1.5rem;    /* 24px */
   --all-text-3xl:  1.875rem;  /* 30px */
 
+  /* Legacy / Component Font size aliases */
+  --all-font-size-xs:   var(--all-text-sm);   /* 12px */
+  --all-font-size-sm:   var(--all-text-base); /* 14px */
+  --all-font-size-base: var(--all-text-md);   /* 16px */
+  --all-font-size-lg:   var(--all-text-lg);   /* 18px */
+  --all-font-size-xl:   var(--all-text-xl);   /* 20px */
+  --all-font-size-2xl:  var(--all-text-2xl);  /* 24px */
+  --all-font-size-3xl:  var(--all-text-3xl);  /* 30px */
+
   /* Font weights */
   --all-font-normal:    400;
   --all-font-medium:    500;

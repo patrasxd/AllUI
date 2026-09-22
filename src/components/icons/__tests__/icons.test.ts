@@ -55,6 +55,11 @@ describe('@all/ui icons sub-path export smoke test', () => {
     expect(typeof Icons.MoonIcon).toBe('function')
   })
 
+  it('exports RulerIcon and its alias IconRuler', () => {
+    expect(typeof Icons.RulerIcon).toBe('function')
+    expect(Icons.IconRuler).toBe(Icons.RulerIcon)
+  })
+
   it('exports no unexpected undefined members in the public set', () => {
     const knownPublicIcons = [
       'PlayIcon', 'PauseIcon', 'StopIcon',
@@ -66,6 +71,7 @@ describe('@all/ui icons sub-path export smoke test', () => {
       'CopyIcon', 'DownloadIcon', 'UploadIcon',
       'TrashIcon', 'CheckIcon', 'VolumeIcon',
       'ExternalLinkIcon', 'SunIcon', 'MoonIcon', 'CodeIcon',
+      'RulerIcon', 'IconRuler',
     ] as const
 
     for (const name of knownPublicIcons) {

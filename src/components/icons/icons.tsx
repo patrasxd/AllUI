@@ -311,3 +311,26 @@ export function PhotoIcon(props: SVGProps<SVGSVGElement>) {
   )
 }
 
+export function RulerIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="m21.73 7.82-5.55-5.55a2.5 2.5 0 0 0-3.54 0L2.27 12.64a2.5 2.5 0 0 0 0 3.54l5.55 5.55a2.5 2.5 0 0 0 3.54 0l10.37-10.37a2.5 2.5 0 0 0 0-3.54Z" />
+      <path d="m10.5 6.5-2 2" />
+      <path d="m13.5 9.5-3 3" />
+      <path d="m16.5 12.5-2 2" />
+    </svg>
+  )
+}
+export const IconRuler = RulerIcon
+
