@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ThemeContext } from '../../theme/ThemeProvider'
 import type { HeaderMenuProps } from './types'
+import { headerMenuTranslations } from './i18n'
 import './HeaderMenu.css'
 
 
@@ -51,23 +52,8 @@ export function HeaderMenu({
 
   const currentTheme = controlledTheme ?? themeCtx?.theme ?? 'dark'
   const isEink = controlledEink ?? themeCtx?.isEink ?? false
-  const isPl = locale === 'pl'
 
-  // Default bilingual dictionary
-  const defaultLabels = {
-    language: isPl ? 'Język' : 'Language',
-    theme: isPl ? 'Motyw' : 'Theme',
-    darkMode: isPl ? 'Ciemny' : 'Dark',
-    lightMode: isPl ? 'Jasny' : 'Light',
-    einkMode: isPl ? 'Tryb e-czytnika (e-ink)' : 'E-reader mode (E-ink)',
-    einkOff: isPl ? 'Wył.' : 'Off',
-    einkOn: isPl ? 'Wł.' : 'On',
-    installApp: isPl ? 'Zainstaluj aplikację' : 'Install app',
-    preferences: isPl ? 'Ustawienia i preferencje' : 'Preferences',
-    menuToggleAria: isPl ? 'Otwórz menu preferencji' : 'Open preferences menu',
-    closeMenuAria: isPl ? 'Zamknij menu preferencji' : 'Close preferences menu',
-  }
-
+  const defaultLabels = headerMenuTranslations[locale] || headerMenuTranslations.en
   const text = { ...defaultLabels, ...labels }
   const baseTheme = isEink ? (currentTheme === 'e-ink-dark' ? 'dark' : 'light') : currentTheme
 
