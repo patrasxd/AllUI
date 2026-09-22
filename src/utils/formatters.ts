@@ -7,6 +7,8 @@ export function formatTime(totalSeconds: number): string {
   return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
 }
 
+export const formatTimerSeconds = formatTime
+
 /**
  * Format milliseconds into MM:SS.ss (stopwatch display)
  */

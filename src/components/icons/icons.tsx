@@ -377,3 +377,55 @@ export function SwitchCameraIcon(props: SVGProps<SVGSVGElement>) {
 }
 export const IconSwitchCamera = SwitchCameraIcon
 
+export function StopwatchIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+      <line x1="10" x2="14" y1="2" y2="2" />
+      <line x1="12" x2="12" y1="14" y2="8" />
+      <circle cx="12" cy="14" r="8" />
+    </svg>
+  )
+}
+export const IconStopwatch = StopwatchIcon
+
+export function NotesIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+      <path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z" />
+      <path d="M15 3v6h6" />
+      <path d="M9 13h6" />
+      <path d="M9 17h4" />
+    </svg>
+  )
+}
+export const IconNotes = NotesIcon
+
+export function PlusIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+      <line x1="12" y1="5" x2="12" y2="19" />
+      <line x1="5" y1="12" x2="19" y2="12" />
+    </svg>
+  )
+}
+export const IconPlus = PlusIcon
+
+export function VolumeMuteIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+      <line x1="23" y1="9" x2="17" y2="15" />
+      <line x1="17" y1="9" x2="23" y2="15" />
+    </svg>
+  )
+}
+export const IconVolumeMute = VolumeMuteIcon
+
+export const IconPlay = PlayIcon
+export const IconPause = PauseIcon
+export const IconRotateCcw = RotateCcwIcon
+export const IconCopy = CopyIcon
+export const IconTrash = TrashIcon
+export const IconCheck = CheckIcon
+export const IconVolume = VolumeIcon
+

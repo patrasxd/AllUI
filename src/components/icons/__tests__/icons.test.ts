@@ -69,6 +69,17 @@ describe('@all/ui icons sub-path export smoke test', () => {
     expect(Icons.IconSwitchCamera).toBe(Icons.SwitchCameraIcon)
   })
 
+  it('exports StopwatchIcon, NotesIcon, PlusIcon, VolumeMuteIcon and their aliases', () => {
+    expect(typeof Icons.StopwatchIcon).toBe('function')
+    expect(Icons.IconStopwatch).toBe(Icons.StopwatchIcon)
+    expect(typeof Icons.NotesIcon).toBe('function')
+    expect(Icons.IconNotes).toBe(Icons.NotesIcon)
+    expect(typeof Icons.PlusIcon).toBe('function')
+    expect(Icons.IconPlus).toBe(Icons.PlusIcon)
+    expect(typeof Icons.VolumeMuteIcon).toBe('function')
+    expect(Icons.IconVolumeMute).toBe(Icons.VolumeMuteIcon)
+  })
+
   it('exports no unexpected undefined members in the public set', () => {
     const knownPublicIcons = [
       'PlayIcon', 'PauseIcon', 'StopIcon',
@@ -78,12 +89,15 @@ describe('@all/ui icons sub-path export smoke test', () => {
       'CloseIcon', 'XIcon',
       'HintIcon',
       'CopyIcon', 'DownloadIcon', 'UploadIcon',
-      'TrashIcon', 'CheckIcon', 'VolumeIcon',
+      'TrashIcon', 'CheckIcon', 'VolumeIcon', 'VolumeMuteIcon', 'IconVolumeMute',
       'ExternalLinkIcon', 'SunIcon', 'MoonIcon', 'CodeIcon',
       'RulerIcon', 'IconRuler',
       'QrCodeIcon', 'IconQrCode',
       'CameraIcon', 'IconCamera',
       'SwitchCameraIcon', 'IconSwitchCamera',
+      'StopwatchIcon', 'IconStopwatch',
+      'NotesIcon', 'IconNotes',
+      'PlusIcon', 'IconPlus',
     ] as const
 
     for (const name of knownPublicIcons) {
