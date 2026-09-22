@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ThemeContext } from '../../theme/ThemeProvider'
 import type { HeaderMenuProps } from './types'
-import { headerMenuTranslations } from './i18n'
+import { headerMenuTranslations, type Locale } from './i18n'
 import './HeaderMenu.css'
 
 
@@ -53,7 +53,7 @@ export function HeaderMenu({
   const currentTheme = controlledTheme ?? themeCtx?.theme ?? 'dark'
   const isEink = controlledEink ?? themeCtx?.isEink ?? false
 
-  const defaultLabels = headerMenuTranslations[locale] || headerMenuTranslations.en
+  const defaultLabels = headerMenuTranslations[(locale as Locale)] || headerMenuTranslations.en
   const text = { ...defaultLabels, ...labels }
   const baseTheme = isEink ? (currentTheme === 'e-ink-dark' ? 'dark' : 'light') : currentTheme
 

@@ -1,6 +1,5 @@
 import type { LegalSection } from './types'
-
-export type Locale = 'en' | 'pl'
+import type { Locale } from '../HeaderMenu'
 
 export interface LegalNoticeTranslations {
   title: string

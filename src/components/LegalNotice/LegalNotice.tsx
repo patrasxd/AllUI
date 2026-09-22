@@ -1,6 +1,7 @@
 import React from 'react'
-import type { LegalNoticeProps } from './types'
+import type { LegalNoticeProps, LegalSection } from './types'
 import { legalNoticeTranslations } from './i18n'
+import type { Locale } from '../HeaderMenu'
 import './LegalNotice.css'
 
 export function LegalNotice({
@@ -9,7 +10,7 @@ export function LegalNotice({
   customSections,
   className = '',
 }: LegalNoticeProps) {
-  const t = legalNoticeTranslations[locale] || legalNoticeTranslations.en
+  const t = legalNoticeTranslations[(locale as Locale)] || legalNoticeTranslations.en
   const defaultSections = t.sections(appName)
   const sections = customSections ?? defaultSections
 
@@ -25,7 +26,7 @@ export function LegalNotice({
       </header>
 
       <div className="all-legal-sections">
-        {sections.map((sec, idx) => (
+        {sections.map((sec: LegalSection, idx: number) => (
           <section key={idx} className="all-legal-section">
             {sec.tag && <span className="all-legal-pill">{sec.tag}</span>}
             <h2 className="all-legal-heading">{sec.title}</h2>

@@ -1,3 +1,3 @@
 export * from './LegalNotice'
 export * from './types'
-export * from './i18n'
+export { legalNoticeTranslations, type LegalNoticeTranslations } from './i18n'

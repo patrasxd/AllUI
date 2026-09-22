@@ -1,20 +1,10 @@
+import type { HeaderMenuLabels } from './types'
+
 export type Locale = 'en' | 'pl'
 
-export interface HeaderMenuLabels {
-  language: string
-  theme: string
-  darkMode: string
-  lightMode: string
-  einkMode: string
-  einkOff: string
-  einkOn: string
-  installApp: string
-  preferences: string
-  menuToggleAria: string
-  closeMenuAria: string
-}
+export type HeaderMenuFullLabels = Required<HeaderMenuLabels>
 
-export const headerMenuTranslations: Record<Locale, HeaderMenuLabels> = {
+export const headerMenuTranslations: Record<Locale, HeaderMenuFullLabels> = {
   en: {
     language: 'Language',
     theme: 'Theme',

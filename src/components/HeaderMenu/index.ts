@@ -1,3 +1,3 @@
 export * from './HeaderMenu'
 export * from './types'
-export * from './i18n'
+export { headerMenuTranslations, type Locale, type HeaderMenuFullLabels } from './i18n'
