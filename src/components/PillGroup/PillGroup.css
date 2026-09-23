@@ -24,6 +24,8 @@
   border-radius: calc(var(--all-radius, 4px) - 1px);
   cursor: pointer;
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
   white-space: nowrap;
   box-sizing: border-box;
   transition:

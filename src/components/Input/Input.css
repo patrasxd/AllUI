@@ -59,6 +59,17 @@
   box-shadow: none !important;
 }
 
+/* Remove browser-default number input spin buttons */
+.all-input-field[type='number']::-webkit-inner-spin-button,
+.all-input-field[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.all-input-field[type='number'] {
+  -moz-appearance: textfield;
+}
+
 .all-input-field::placeholder {
   color: var(--all-text-dim);
   opacity: 0.8;
@@ -114,4 +125,15 @@
 
 .all-input-container--disabled .all-input-field {
   cursor: not-allowed;
+}
+
+/* Remove default spinner buttons across browsers */
+.all-input-field[type='number']::-webkit-inner-spin-button,
+.all-input-field[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.all-input-field[type='number'] {
+  -moz-appearance: textfield;
 }

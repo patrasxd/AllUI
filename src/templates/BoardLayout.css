@@ -16,6 +16,9 @@
            env(safe-area-inset-left, var(--all-space-4, 1rem));
   box-sizing: border-box;
   color: var(--all-text);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ─── HUD Region (Top) ─── */

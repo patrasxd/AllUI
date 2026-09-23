@@ -39,17 +39,17 @@
 }
 
 [data-theme='light'] {
-  --all-bg:         #f2f1ec;
+  --all-bg:         #f8fafc;
   --all-surface:    #ffffff;
-  --all-surface-2:  #ebebeb;
-  --all-border:     #dcdcdc;
-  --all-border-2:   #c0c0c0;
-  --all-text:       #111111;
-  --all-text-muted: #aaaaaa;
-  --all-text-dim:   #777777;
-  --all-accent:     #000000;
-  --all-accent-dim: #333333;
-  --all-focus-ring: rgba(0, 0, 0, 0.4);
+  --all-surface-2:  #f1f5f9;
+  --all-border:     #e2e8f0;
+  --all-border-2:   #cbd5e1;
+  --all-text:       #0f172a;
+  --all-text-muted: #64748b;
+  --all-text-dim:   #475569;
+  --all-accent:     #0f172a;
+  --all-accent-dim: #334155;
+  --all-focus-ring: rgba(15, 23, 42, 0.25);
 
   /* Semantic Intent Tokens */
   --all-danger:          #dc2626;

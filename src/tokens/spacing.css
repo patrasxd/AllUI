@@ -12,6 +12,9 @@
   --all-space-20: 5rem;    /* 80px */
   --all-space-24: 6rem;    /* 96px */
 
+  /* Layout */
+  --all-header-height: 64px;
+
   /* Legacy aliases */
   --space-1:  var(--all-space-1);
   --space-2:  var(--all-space-2);

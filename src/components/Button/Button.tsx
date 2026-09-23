@@ -1,12 +1,14 @@
 import React, { forwardRef } from 'react'
 import './Button.css'
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'outline'
-export type ButtonSize = 'sm' | 'md' | 'lg'
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'outline' | 'success'
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl'
+export type ButtonShape = 'default' | 'circle' | 'pill'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   size?: ButtonSize
+  shape?: ButtonShape
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
   loading?: boolean
@@ -18,6 +20,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   {
     variant = 'secondary',
     size = 'md',
+    shape = 'default',
     icon,
     iconPosition = 'left',
     loading = false,
@@ -36,6 +39,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     'all-btn',
     `all-btn--${variant}`,
     `all-btn--${size}`,
+    shape !== 'default' ? `all-btn--${shape}` : '',
     loading ? 'all-btn--loading' : '',
     fullWidth ? 'all-btn--full' : '',
     className,

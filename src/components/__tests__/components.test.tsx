@@ -42,6 +42,19 @@ describe('@all/ui Shared Components Public API', () => {
       expect(handleClick).toHaveBeenCalledTimes(1)
     })
 
+    it('renders size xl, success variant, and circle shape', () => {
+      render(
+        <Button variant="success" size="xl" shape="circle">
+          Start
+        </Button>
+      )
+      const btn = screen.getByRole('button', { name: /start/i })
+      expect(btn).toBeInTheDocument()
+      expect(btn).toHaveClass('all-btn--success')
+      expect(btn).toHaveClass('all-btn--xl')
+      expect(btn).toHaveClass('all-btn--circle')
+    })
+
     it('renders in loading state with spinner and disabled behavior', () => {
       const handleClick = vi.fn()
       render(

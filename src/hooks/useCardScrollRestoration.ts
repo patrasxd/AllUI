@@ -26,6 +26,25 @@ export function clearLastActiveCardId(): void {
   }
 }
 
+/**
+ * Retrieves the stored last active card ID, or null if none is set.
+ */
+export function getLastActiveCardId(): string | null {
+  if (typeof window === 'undefined') return null
+  try {
+    return sessionStorage.getItem(STORAGE_KEY)
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Returns true if the user is returning to the catalog from an active game or tool.
+ */
+export function isReturningFromCard(): boolean {
+  return Boolean(getLastActiveCardId())
+}
+
 export interface CardScrollRestorationOptions {
   /**
    * Defines vertical alignment within viewport. Defaults to 'center'.
