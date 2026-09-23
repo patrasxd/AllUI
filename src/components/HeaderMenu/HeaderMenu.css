@@ -164,8 +164,8 @@
   justify-content: center;
   gap: var(--all-space-2, 0.5rem);
   padding: var(--all-space-2, 0.5rem) var(--all-space-3, 0.75rem);
-  background: linear-gradient(135deg, var(--all-surface-2, var(--surface-2, #181818)), rgba(255, 255, 255, 0.04));
-  border: 1px solid rgba(255, 190, 92, 0.5);
+  background: var(--all-surface-2, var(--surface-2, #181818));
+  border: 1px solid var(--all-border-2, var(--border-2, #333333));
   border-radius: var(--all-radius-sm, var(--radius-sm, 2px));
   color: var(--all-text, var(--text, #efefef));
   font-family: var(--all-font-sans, var(--font-sans, inherit));
@@ -176,14 +176,14 @@
   transition:
     background var(--all-duration-fast, 150ms) ease,
     border-color var(--all-duration-fast, 150ms) ease,
-    transform var(--all-duration-fast, 150ms) ease;
+    color var(--all-duration-fast, 150ms) ease;
 }
 
 .all-header-menu-support-btn:hover,
 .header-menu-support-btn:hover {
-  background: rgba(255, 190, 92, 0.08);
-  border-color: rgba(255, 190, 92, 0.9);
-  transform: translateY(-1px);
+  background: var(--all-surface, var(--surface, #222222));
+  border-color: var(--all-text-dim, var(--text-dim, #888888));
+  color: var(--all-text, var(--text, #ffffff));
 }
 
 /* ─── E-Ink / High-Contrast Support ─── */

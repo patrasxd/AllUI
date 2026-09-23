@@ -10,6 +10,7 @@ export interface HeaderMenuLabels {
   preferences?: string
   menuToggleAria?: string
   closeMenuAria?: string
+  otherProjects?: string
 }
 
 export interface HeaderMenuProps {

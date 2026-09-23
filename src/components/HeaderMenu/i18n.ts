@@ -17,6 +17,7 @@ export const headerMenuTranslations: Record<Locale, HeaderMenuFullLabels> = {
     preferences: 'Preferences',
     menuToggleAria: 'Open preferences menu',
     closeMenuAria: 'Close preferences menu',
+    otherProjects: 'See other projects',
   },
   pl: {
     language: 'Język',
@@ -30,5 +31,6 @@ export const headerMenuTranslations: Record<Locale, HeaderMenuFullLabels> = {
     preferences: 'Ustawienia i preferencje',
     menuToggleAria: 'Otwórz menu preferencji',
     closeMenuAria: 'Zamknij menu preferencji',
+    otherProjects: 'Zobacz inne projekty',
   },
 }

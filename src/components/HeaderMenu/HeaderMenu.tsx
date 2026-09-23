@@ -39,8 +39,8 @@ export function HeaderMenu({
   onEinkChange,
   canInstall = false,
   onInstall,
-  supportUrl = 'https://www.buymeacoffee.com/patrasxd',
-  supportLabel = 'Buy me a coffee',
+  supportUrl = 'https://patrasxd.github.io/AllLinks/',
+  supportLabel,
   labels,
   className = '',
 }: HeaderMenuProps) {
@@ -55,6 +55,7 @@ export function HeaderMenu({
 
   const defaultLabels = headerMenuTranslations[(locale as Locale)] || headerMenuTranslations.en
   const text = { ...defaultLabels, ...labels }
+  const resolvedSupportLabel = supportLabel ?? text.otherProjects ?? 'See other projects'
   const baseTheme = isEink ? (currentTheme === 'e-ink-dark' ? 'dark' : 'light') : currentTheme
 
   // Close on outside click
@@ -226,9 +227,9 @@ export function HeaderMenu({
                   target="_blank"
                   rel="noreferrer noopener"
                   className="all-header-menu-support-btn"
-                  aria-label={supportLabel}
+                  aria-label={resolvedSupportLabel}
                 >
-                  <span>{supportLabel}</span>
+                  <span>{resolvedSupportLabel}</span>
                 </a>
               </>
             )}
