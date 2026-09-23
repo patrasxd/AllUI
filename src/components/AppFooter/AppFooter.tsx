@@ -3,7 +3,7 @@ import type { AppFooterProps } from './types'
 import './AppFooter.css'
 
 export function AppFooter({
-  legalLabel = 'Legal Notice & Privacy',
+  legalLabel,
   onLegalClick,
   legalHref = '/legal',
   copyright,
@@ -14,21 +14,23 @@ export function AppFooter({
   return (
     <footer className={`all-app-footer ${className}`.trim()}>
       <div className="all-app-footer__links">
-        {onLegalClick ? (
-          <button
-            type="button"
-            className="all-app-footer__link"
-            onClick={onLegalClick}
-          >
-            {legalLabel}
-          </button>
-        ) : (
-          <a
-            href={legalHref}
-            className="all-app-footer__link"
-          >
-            {legalLabel}
-          </a>
+        {legalLabel && (
+          onLegalClick ? (
+            <button
+              type="button"
+              className="all-app-footer__link"
+              onClick={onLegalClick}
+            >
+              {legalLabel}
+            </button>
+          ) : (
+            <a
+              href={legalHref}
+              className="all-app-footer__link"
+            >
+              {legalLabel}
+            </a>
+          )
         )}
         {links.map((link, idx) => (
           link.onClick ? (
