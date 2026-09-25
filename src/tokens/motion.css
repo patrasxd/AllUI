@@ -25,6 +25,20 @@
   --duration-slow:     0ms !important;
 }
 
+[data-theme^='e-ink'] *,
+[data-theme^='e-ink'] *::before,
+[data-theme^='e-ink'] *::after,
+[data-eink='true'] *,
+[data-eink='true'] *::before,
+[data-eink='true'] *::after {
+  animation: none !important;
+  transition: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 [data-motion='expressive'] {
   --all-duration-fast: 200ms;
   --all-duration:      350ms;

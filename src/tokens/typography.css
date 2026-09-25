@@ -1,9 +1,11 @@
 :root {
   --all-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --all-font-serif: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --all-font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Aliases */
   --font-sans: var(--all-font-sans);
+  --font-serif: var(--all-font-serif);
   --font-mono: var(--all-font-mono);
 
   /* Font sizes */
