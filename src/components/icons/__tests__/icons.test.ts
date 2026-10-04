@@ -92,6 +92,7 @@ describe('@all/ui icons sub-path export smoke test', () => {
       'TrashIcon', 'CheckIcon', 'VolumeIcon', 'VolumeMuteIcon', 'IconVolumeMute',
       'ExternalLinkIcon', 'SunIcon', 'MoonIcon', 'CodeIcon',
       'RulerIcon', 'IconRuler',
+      'LevelIcon', 'IconLevel',
       'QrCodeIcon', 'IconQrCode',
       'CameraIcon', 'IconCamera',
       'SwitchCameraIcon', 'IconSwitchCamera',
