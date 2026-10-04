@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/Package-%40all%2Fui-black.svg" alt="@all/ui" />
   <img src="https://img.shields.io/badge/React-18.3-blue.svg" alt="React 18" />
   <img src="https://img.shields.io/badge/TypeScript-5.5-blue.svg" alt="TypeScript 5" />
-  <img src="https://img.shields.io/badge/Vitest-11%20passed-success.svg" alt="Vitest Tests" />
+  <img src="https://img.shields.io/badge/Vitest-71%20passed-success.svg" alt="Vitest Tests" />
 </p>
 
 ---
