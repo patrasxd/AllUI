@@ -325,14 +325,43 @@ export function RulerIcon(props: SVGProps<SVGSVGElement>) {
       aria-hidden="true"
       {...props}
     >
-      <path d="m21.73 7.82-5.55-5.55a2.5 2.5 0 0 0-3.54 0L2.27 12.64a2.5 2.5 0 0 0 0 3.54l5.55 5.55a2.5 2.5 0 0 0 3.54 0l10.37-10.37a2.5 2.5 0 0 0 0-3.54Z" />
-      <path d="m10.5 6.5-2 2" />
-      <path d="m13.5 9.5-3 3" />
-      <path d="m16.5 12.5-2 2" />
+      <rect x="2" y="6" width="20" height="12" rx="1.5" />
+      <circle cx="5" cy="12" r="1" />
+      <line x1="8" y1="6" x2="8" y2="12" />
+      <line x1="11" y1="6" x2="11" y2="9.5" />
+      <line x1="14" y1="6" x2="14" y2="12" />
+      <line x1="17" y1="6" x2="17" y2="9.5" />
+      <line x1="20" y1="6" x2="20" y2="12" />
     </svg>
   )
 }
 export const IconRuler = RulerIcon
+
+export function LevelIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <rect x="2" y="6" width="20" height="12" rx="2" />
+      <path d="M8 10h8a2 2 0 0 1 0 4H8a2 2 0 0 1 0-4Z" />
+      <circle cx="12" cy="12" r="1" fill="currentColor" />
+      <line x1="10" y1="10" x2="10" y2="14" />
+      <line x1="14" y1="10" x2="14" y2="14" />
+      <circle cx="4.5" cy="12" r="0.75" />
+      <circle cx="19.5" cy="12" r="0.75" />
+    </svg>
+  )
+}
+export const IconLevel = LevelIcon
 
 export function QrCodeIcon(props: SVGProps<SVGSVGElement>) {
   return (
