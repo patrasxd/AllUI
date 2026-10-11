@@ -40,6 +40,33 @@
   min-width: 0;
 }
 
+.header-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--all-space-2, 0.5rem);
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--all-text, var(--text, #efefef));
+  font-family: var(--all-font-sans, inherit);
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: var(--all-font-bold, 700);
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  transition: opacity var(--all-duration-fast, 150ms) ease;
+}
+
+.header-logo:hover {
+  opacity: 0.6;
+}
+
+.header-logo-icon {
+  flex-shrink: 0;
+  color: inherit;
+}
+
 .all-header__title,
 .header-game-title,
 .header-tool-title {
@@ -76,6 +103,40 @@
   flex-shrink: 1;
 }
 
+@media (max-width: 640px) {
+  .all-header__actions,
+  .header-game-stats,
+  .header-tool-stats {
+    max-width: calc(100% - 38px);
+    overflow: visible;
+  }
+
+  .all-header__title,
+  .header-game-title,
+  .header-tool-title {
+    display: -webkit-box;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none;
+    max-height: 2.2em;
+    overflow: hidden;
+    font-size: clamp(0.6875rem, 2.3vw, 0.8125rem);
+    line-height: 1.1;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .all-header__right,
+  .header-actions {
+    max-width: 68%;
+  }
+
+  .header-logo {
+    font-size: 1rem;
+  }
+}
+
 /* E-Ink Support */
 [data-theme^='e-ink'] .all-header,
 [data-theme^='e-ink'] .header,
@@ -101,22 +162,36 @@
   .all-header__left,
   .header-left-group {
     gap: var(--all-space-1, 4px);
+    flex: 1 1 auto;
     min-width: 0;
-    flex-shrink: 1;
+  }
+
+  .header-logo {
+    font-size: 0.9375rem;
   }
 
   .all-header__title,
   .header-game-title,
   .header-tool-title {
-    max-width: 4.8rem;
-    font-size: 0.75rem;
+    display: -webkit-box;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+    max-height: 2.2em;
+    overflow: hidden;
+    font-size: clamp(0.625rem, 2.8vw, 0.75rem);
+    line-height: 1.1;
     padding-left: var(--all-space-1, 4px);
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   .all-header__right,
   .header-actions {
-    max-width: 75%;
+    flex: 0 1 auto;
     gap: var(--all-space-1, 4px);
+    max-width: 75%;
     overflow: visible;
   }
 
@@ -127,4 +202,3 @@
     overflow: visible;
   }
 }
-

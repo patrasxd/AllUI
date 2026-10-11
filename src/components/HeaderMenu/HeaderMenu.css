@@ -7,6 +7,24 @@
   overflow: visible;
 }
 
+.header-icon-btn {
+  width: 36px;
+  height: 36px;
+  border: var(--all-border-width-sm, 1px) solid var(--all-border, var(--border, #242424));
+  border-radius: var(--all-radius, var(--radius, 4px));
+  background: transparent;
+  color: var(--all-text-dim, var(--text-dim, #888888));
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color var(--all-duration, 250ms) ease,
+    color var(--all-duration, 250ms) ease,
+    background var(--all-duration, 250ms) ease;
+  flex-shrink: 0;
+}
+
 .all-header-menu-btn,
 .header-menu-btn {
   width: 36px;
@@ -28,6 +46,7 @@
 
 .all-header-menu-btn:hover,
 .all-header-menu-btn--active,
+.header-icon-btn:hover,
 .header-menu-btn:hover,
 .header-menu-btn--active {
   border-color: var(--all-border-2, var(--border-2, #333333));
@@ -156,6 +175,12 @@
   border-color: var(--all-text-dim, var(--text-dim, #888888));
 }
 
+.header-menu-option-code {
+  font-family: var(--all-font-mono, var(--font-mono, monospace));
+  font-size: 0.6875rem;
+  opacity: 0.7;
+}
+
 .all-header-menu-support-btn,
 .header-menu-support-btn {
   width: 100%;
@@ -215,4 +240,11 @@
 [data-eink='true'] .all-header-menu-install-btn,
 [data-eink='true'] .header-menu-install-btn {
   border: 1.5px solid var(--all-border, var(--border, #000000)) !important;
+}
+
+@media (max-width: 640px) {
+  .all-header-menu-dropdown,
+  .header-menu-dropdown {
+    width: min(280px, calc(100vw - 1.5rem));
+  }
 }

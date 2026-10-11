@@ -12,6 +12,7 @@
     "./tokens": "./src/tokens/index.ts",
     "./tokens.css": "./src/tokens/tokens.css",
     "./styles": "./src/tokens/tokens.css",
+    "./global.css": "./src/global.css",
     "./primitives": "./src/primitives/index.ts",
     "./components": "./src/components/index.ts",
     "./templates": "./src/templates/index.ts",

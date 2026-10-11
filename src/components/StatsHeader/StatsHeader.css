@@ -85,7 +85,7 @@
 }
 
 /* ─── Narrow Mobile Layout Compacting ─── */
-@media (max-width: 420px) {
+@media (max-width: 640px) {
   .all-stats-header,
   .game-stats-header,
   .tool-stats-header {
@@ -136,4 +136,3 @@
     font-size: 0.7rem;
   }
 }
-
