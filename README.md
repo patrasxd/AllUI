@@ -45,7 +45,9 @@
 
 ## Installation & Subpath Exports
 
-In the monorepo workspace, `@all/ui` is consumed via local file reference (`file:../../AllUI`) or git submodule.
+AllGames, AllTools, and AllLinks consume `@all/ui` from their own `AllUI/` Git submodule through `"@all/ui": "file:./AllUI"` in the product root `package.json`. Clone products with `--recurse-submodules`, or initialize their submodules with `git submodule update --init --recursive` before installing dependencies.
+
+The sibling `AllProject/AllUI` checkout is the independent library repository. Editing it does not update the product submodules; each product pins its own AllUI commit.
 
 ### Subpath Exports
 
@@ -55,23 +57,23 @@ import { Button, Card, Dialog, AppHeader } from '@all/ui'
 
 // Semantic Tokens & CSS
 import '@all/ui/tokens.css'
-import { semanticTokens } from '@all/ui/tokens'
+import { COLOR_TOKENS } from '@all/ui/tokens'
 
 // Theme & Motion Providers
 import { ThemeProvider, useTheme } from '@all/ui/theme'
-import { MotionProvider, useMotion } from '@all/ui/motion'
+import { MotionProvider, useMotion } from '@all/ui'
 
 // Responsive Layout Templates
 import { BoardLayout, SplitWorkspaceLayout, CenteredUtilityLayout, FullBleedLayout } from '@all/ui/templates'
 
 // Icons Collection
-import { SunIcon, MoonIcon, SettingsIcon, BackIcon } from '@all/ui/icons'
+import { SunIcon, MoonIcon, SettingsIcon, CheckIcon } from '@all/ui/icons'
 
 // Formatters & Utilities
-import { formatTime, formatStopwatchTime, pad3 } from '@all/ui/utils'
+import { formatTime, formatStopwatchTime, pad3 } from '@all/ui'
 
 // Hooks
-import { usePWAInstall, useCardScrollRestoration } from '@all/ui/hooks'
+import { usePWAInstall, useCardScrollRestoration } from '@all/ui'
 ```
 
 ---
@@ -163,9 +165,17 @@ When an E-Ink theme is active or the user has enabled OS `prefers-reduced-motion
 
 ```tsx
 import { ThemeProvider, useTheme } from '@all/ui/theme'
-import { MotionProvider } from '@all/ui/motion'
+import { MotionProvider } from '@all/ui'
 
 function Root() {
+  return (
+    <ThemeProvider defaultTheme="dark" storageKey="app:theme">
+      <ThemedMotionProvider />
+    </ThemeProvider>
+  )
+}
+
+function ThemedMotionProvider() {
   const { isEink } = useTheme()
   return (
     <MotionProvider defaultProfile="normal" forcedNone={isEink}>
@@ -183,9 +193,9 @@ Reusable layout wrappers that intelligently allocate the available screen withou
 
 | Template | Primary Intent | Key Properties & Slots |
 | :--- | :--- | :--- |
-| **`BoardLayout`** | Aspect-constrained grids, game boards | Slots: `children` (board), `statusSlot` (header/stats), `controlsSlot` (action buttons). Maintains aspect ratio while scaling within available viewport. |
-| **`SplitWorkspaceLayout`** | Multi-pane workbench workflows | Slots: `sidebar` (inputs/controls), `main` (live output/preview). Horizontal split on desktop/tablet, vertical stack on mobile. |
-| **`CenteredUtilityLayout`** | Focused single-card tools, converters, timers | Props: `maxWidth` (`sm`, `md`, `lg`, `xl`). Centers content vertically and horizontally within 100dvh viewport. |
+| **`BoardLayout`** | Aspect-constrained grids, game boards | Slots: `board` or `children`, `hud`, `controls`, `dpad`, `sidePanel`, `overlay`, and `settings`. Variants: `square`, `wide`, `fluid`, `stacked`. |
+| **`SplitWorkspaceLayout`** | Multi-pane workbench workflows | Required slots: `inputPane`, `outputPane`. Optional: `toolbar`, `statusBar`; `splitRatio` selects `50/50`, `40/60`, or `35/65`. |
+| **`CenteredUtilityLayout`** | Focused single-card tools, converters, timers | Required: `primaryDisplay`. Optional: `controls`, `header`, `footer`, and `maxWidth` (CSS string or number). |
 | **`FullBleedLayout`** | Edge-to-edge canvas, sound meters, sensor rulers | Intended for immersive touch or sensor views. Eliminates margin padding, fills 100% of available viewport area. |
 
 ---
@@ -229,19 +239,19 @@ Reusable layout wrappers that intelligently allocate the available screen withou
 
 ### Iconography Collection
 Shared SVG vector icons with consistent 20×20px or 24×24px viewboxes:
-`SunIcon`, `MoonIcon`, `EInkIcon`, `SettingsIcon`, `DownloadIcon`, `BackIcon`, `CrossIcon`, `CheckIcon`, `SearchIcon`, `CopyIcon`, `PlayIcon`, `PauseIcon`, `ResetIcon`, `ChevronIcon`, `HelpIcon`, etc.
+`SunIcon`, `MoonIcon`, `SettingsIcon`, `DownloadIcon`, `CloseIcon`, `CheckIcon`, `CopyIcon`, `PlayIcon`, `PauseIcon`, `RotateCcwIcon`, `HintIcon`, `ExternalLinkIcon`, etc. See `src/components/icons/icons.tsx` for the complete exported set.
 
 ---
 
 ## Hooks & Utilities
 
-### Formatters (`@all/ui/utils`)
+### Formatters (from `@all/ui`)
 
 - `formatTime(seconds)`: Formats duration into `MM:SS`.
 - `formatStopwatchTime(ms)`: Formats millisecond duration into precision `MM:SS.ss`.
 - `pad3(num)`: Pads integer to 3 digits (e.g., `007`).
 
-### Hooks (`@all/ui/hooks`)
+### Hooks (from `@all/ui`)
 
 - **`usePWAInstall()`**: Captures browser `beforeinstallprompt` event and exposes `{ canInstall, isInstalled, install() }`.
 - **`useCardScrollRestoration(containerRef, key)`**: Preserves and restores scroll offsets during in-page navigation.
