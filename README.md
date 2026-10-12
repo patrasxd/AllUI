@@ -215,6 +215,7 @@ Reusable layout wrappers that intelligently allocate the available screen withou
 - **`IconButton`**: Square accessible button enforcing explicit `aria-label`.
 - **`ControlsBar`**: Semantic flex container for action buttons (`forwardRef`, backward-compatible with `.game-controls-bar`).
 - **`PillGroup`**: Segmented tab switcher with keyboard navigation, active state animations, and optional icons.
+- **`FilterGroup`**: Shared category filters used by AllGames, AllTools, and AllLinks. Controlled `value` / `onChange` API with `options` (`id`, `value`, `label`, `count`, optional `buttonId`) and an accessible group `label`. Owns the wrapping layout, compact chip sizing, counts, focus, pressed state, and per-instance motion indicator. E-Ink and reduced motion retain selection without animations; filtering and deselection remain in the consumer. Do not recreate filter styles in product CSS.
 - **`ModeSelect`**: Multi-option card picker for difficulty/operating modes with title, description, icon, and `aria-pressed`.
 - **`Slider`**: Calibrated range slider with semantic token tracks, numeric labels, and touch support.
 

@@ -1,0 +1,98 @@
+.all-filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--all-space-2);
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.all-filter-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--all-space-2);
+  box-sizing: border-box;
+  padding: var(--all-space-1) var(--all-space-3);
+  background: transparent;
+  border: 1px solid var(--all-border);
+  border-radius: 9999px;
+  color: var(--all-text-dim);
+  font-family: var(--all-font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    color var(--all-duration-fast) ease,
+    border-color var(--all-duration-fast) ease;
+}
+
+.all-filter-chip:hover {
+  color: var(--all-text);
+  border-color: var(--all-border-2);
+}
+
+.all-filter-chip--active {
+  color: var(--all-text);
+  border-color: var(--all-text-dim);
+  background: var(--all-surface-2);
+  font-weight: 600;
+}
+
+.all-filter-chip:focus-visible {
+  outline: 2px solid var(--all-text);
+  outline-offset: 3px;
+}
+
+.all-filter-indicator {
+  position: absolute;
+  inset: -1px;
+  background: var(--all-surface-2);
+  border: 1px solid var(--all-text-dim);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.all-filter-text,
+.all-filter-count {
+  position: relative;
+  z-index: 1;
+}
+
+.all-filter-count {
+  font-family: var(--all-font-mono);
+  font-size: 0.625rem;
+  opacity: 0.6;
+}
+
+[data-theme^='e-ink'] .all-filter-chip,
+[data-eink='true'] .all-filter-chip {
+  border: 1.5px solid var(--all-border);
+  color: var(--all-text);
+  transition: none;
+}
+
+[data-theme^='e-ink'] .all-filter-chip--active,
+[data-eink='true'] .all-filter-chip--active {
+  background: var(--all-text);
+  color: var(--all-bg);
+  border-color: var(--all-text);
+}
+
+[data-theme^='e-ink'] .all-filter-chip--active .all-filter-count,
+[data-eink='true'] .all-filter-chip--active .all-filter-count {
+  color: inherit;
+  opacity: 1;
+}
+
+[data-motion='none'] .all-filter-chip {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .all-filter-chip {
+    transition: none;
+  }
+}
