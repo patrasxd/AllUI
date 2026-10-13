@@ -1,4 +1,5 @@
 export * from './types'
+export * from './DocumentPage'
 export * from './BoardLayout'
 export * from './SplitWorkspaceLayout'
 export * from './CenteredUtilityLayout'

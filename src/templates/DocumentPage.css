@@ -1,0 +1,10 @@
+.container.all-document-page {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+.all-document-back {
+  margin-bottom: 1.25rem;
+}

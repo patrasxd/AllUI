@@ -1,0 +1,107 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  background-color: var(--all-bg, var(--bg));
+  color: var(--all-text, var(--text));
+}
+
+body {
+  font-family: var(--all-font-sans, var(--font-sans));
+  background-color: var(--all-bg, var(--bg));
+  color: var(--all-text, var(--text));
+}
+
+input,
+textarea,
+[contenteditable='true'],
+pre,
+code,
+.selectable-text {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--all-font-sans, var(--font-sans));
+  font-weight: var(--all-font-bold, 700);
+  line-height: var(--all-leading-tight, 1.1);
+  letter-spacing: -0.02em;
+}
+
+p {
+  line-height: var(--all-leading-relaxed, 1.6);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font-family: var(--all-font-sans, var(--font-sans));
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--all-border-2, var(--border-2));
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--all-text-muted, var(--text-muted));
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--all-space-8, var(--space-8));
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: var(--all-space-3, 0.75rem);
+  }
+}
+
+[data-theme^='e-ink'] body::after,
+[data-eink='true'] body::after {
+  display: none;
+}

@@ -2,7 +2,7 @@
 
 <p align="center">
   <strong>Unified, neutral design system, responsive templates, and accessible UI primitives.</strong><br>
-  Engineered specifically for <strong>AllGames</strong> and <strong>AllTools</strong>.
+  Shared by <strong>AllGames</strong>, <strong>AllTools</strong>, and <strong>AllLinks</strong>.
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/Package-%40all%2Fui-black.svg" alt="@all/ui" />
   <img src="https://img.shields.io/badge/React-18.3-blue.svg" alt="React 18" />
   <img src="https://img.shields.io/badge/TypeScript-5.5-blue.svg" alt="TypeScript 5" />
-  <img src="https://img.shields.io/badge/Vitest-71%20passed-success.svg" alt="Vitest Tests" />
+  <img src="https://img.shields.io/badge/Vitest-tested-success.svg" alt="Vitest Tests" />
 </p>
 
 ---
@@ -32,7 +32,7 @@
 
 ## Overview & Philosophy
 
-`@all/ui` is the foundational design system and component contract shared by sibling applications **AllGames** and **AllTools**.
+`@all/ui` is the foundational design system and component contract shared by sibling applications **AllGames**, **AllTools**, and **AllLinks**.
 
 ### Core Architecture Rules
 
@@ -84,20 +84,20 @@ Tokens are defined as standard CSS custom properties in `src/tokens/*.css` and e
 
 ### 1. Colors & Surfaces
 
-| Token | Fallback | Purpose / Description |
-| :--- | :--- | :--- |
-| `--all-bg` | `--bg` | Primary application canvas background |
-| `--all-surface` | `--surface` | Default component / card surface |
-| `--all-surface-2` | `--surface-2` | Secondary / elevated container surface |
-| `--all-border` | `--border` | Subtle structural border line |
-| `--all-border-2` | `--border-2` | High-contrast or focused border |
-| `--all-text` | `--text` | Primary high-contrast text color |
-| `--all-text-muted` | `--text-muted` | Secondary explanatory text |
-| `--all-text-dim` | `--text-dim` | Tertiary / disabled text |
-| `--all-accent` | `--accent` | Brand interactive focus & active accent |
-| `--all-success` | `--success` | Positive state / victory indication |
-| `--all-warning` | `--warning` | Caution / pending state |
-| `--all-danger` | `--danger` | Error / destructive action |
+| Token              | Fallback       | Purpose / Description                   |
+| :----------------- | :------------- | :-------------------------------------- |
+| `--all-bg`         | `--bg`         | Primary application canvas background   |
+| `--all-surface`    | `--surface`    | Default component / card surface        |
+| `--all-surface-2`  | `--surface-2`  | Secondary / elevated container surface  |
+| `--all-border`     | `--border`     | Subtle structural border line           |
+| `--all-border-2`   | `--border-2`   | High-contrast or focused border         |
+| `--all-text`       | `--text`       | Primary high-contrast text color        |
+| `--all-text-muted` | `--text-muted` | Secondary explanatory text              |
+| `--all-text-dim`   | `--text-dim`   | Tertiary / disabled text                |
+| `--all-accent`     | `--accent`     | Brand interactive focus & active accent |
+| `--all-success`    | `--success`    | Positive state / victory indication     |
+| `--all-warning`    | `--warning`    | Caution / pending state                 |
+| `--all-danger`     | `--danger`     | Error / destructive action              |
 
 ### 2. Spacing & Dimensions
 
@@ -137,11 +137,7 @@ function Root() {
 
 function ThemeToggle() {
   const { theme, setTheme, isEink, isDark } = useTheme()
-  return (
-    <button onClick={() => setTheme(isDark ? 'light' : 'dark')}>
-      Current Theme: {theme}
-    </button>
-  )
+  return <button onClick={() => setTheme(isDark ? 'light' : 'dark')}>Current Theme: {theme}</button>
 }
 ```
 
@@ -191,12 +187,12 @@ function ThemedMotionProvider() {
 
 Reusable layout wrappers that intelligently allocate the available screen without page-level scrollbars:
 
-| Template | Primary Intent | Key Properties & Slots |
-| :--- | :--- | :--- |
-| **`BoardLayout`** | Aspect-constrained grids, game boards | Slots: `board` or `children`, `hud`, `controls`, `dpad`, `sidePanel`, `overlay`, and `settings`. Variants: `square`, `wide`, `fluid`, `stacked`. |
-| **`SplitWorkspaceLayout`** | Multi-pane workbench workflows | Required slots: `inputPane`, `outputPane`. Optional: `toolbar`, `statusBar`; `splitRatio` selects `50/50`, `40/60`, or `35/65`. |
-| **`CenteredUtilityLayout`** | Focused single-card tools, converters, timers | Required: `primaryDisplay`. Optional: `controls`, `header`, `footer`, and `maxWidth` (CSS string or number). |
-| **`FullBleedLayout`** | Edge-to-edge canvas, sound meters, sensor rulers | Intended for immersive touch or sensor views. Eliminates margin padding, fills 100% of available viewport area. |
+| Template                    | Primary Intent                                   | Key Properties & Slots                                                                                                                           |
+| :-------------------------- | :----------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`BoardLayout`**           | Aspect-constrained grids, game boards            | Slots: `board` or `children`, `hud`, `controls`, `dpad`, `sidePanel`, `overlay`, and `settings`. Variants: `square`, `wide`, `fluid`, `stacked`. |
+| **`SplitWorkspaceLayout`**  | Multi-pane workbench workflows                   | Required slots: `inputPane`, `outputPane`. Optional: `toolbar`, `statusBar`; `splitRatio` selects `50/50`, `40/60`, or `35/65`.                  |
+| **`CenteredUtilityLayout`** | Focused single-card tools, converters, timers    | Required: `primaryDisplay`. Optional: `controls`, `header`, `footer`, and `maxWidth` (CSS string or number).                                     |
+| **`FullBleedLayout`**       | Edge-to-edge canvas, sound meters, sensor rulers | Intended for immersive touch or sensor views. Eliminates margin padding, fills 100% of available viewport area.                                  |
 
 ---
 
@@ -205,12 +201,14 @@ Reusable layout wrappers that intelligently allocate the available screen withou
 `@all/ui` exports over 25 accessible, fully tested UI primitives:
 
 ### Navigation & Header / Footer
+
 - **`AppHeader`**: Standard sticky application bar with logo, title slot, actions slot, and menu slot.
 - **`HeaderMenu`**: Accessible dropdown dialog providing language selection (EN/PL), theme toggles, E-reader mode switch, PWA install button, and support link.
 - **`AppFooter`**: Standard page bottom bar with copyright notice, legal link trigger, and external links.
 - **`BackLink`**: Accessible floating back button with chevron icon and smooth hover micro-animation.
 
 ### Actions & Controls
+
 - **`Button`**: Accessible button with variants (`primary`, `secondary`, `ghost`, `danger`), sizes (`sm`, `md`, `lg`), loading spinner, and icon slots.
 - **`IconButton`**: Square accessible button enforcing explicit `aria-label`.
 - **`ControlsBar`**: Semantic flex container for action buttons (`forwardRef`, backward-compatible with `.game-controls-bar`).
@@ -219,12 +217,17 @@ Reusable layout wrappers that intelligently allocate the available screen withou
 - **`ModeSelect`**: Multi-option card picker for difficulty/operating modes with title, description, icon, and `aria-pressed`.
 - **`Slider`**: Calibrated range slider with semantic token tracks, numeric labels, and touch support.
 
+- **`CatalogCard` / `SketchBorder`**: Shared directory cards with icon, title, description, tags and action; product adapters own destinations and routing.
+- **`DirectoryHero` / `CatalogSectionHeader` / `CatalogGrid`**: Shared catalog headings and responsive grids, preserving explicit product appearance options.
+
 ### Forms & Input
+
 - **`Input`**: Accessible text input with label, error announcement, helper text, and clear button.
 - **`Select`**: Dropdown selector styled with semantic design tokens.
 - **`Toggle`**: Accessible `role="switch"` toggle with label, description, and keyboard activation.
 
 ### Content & Containers
+
 - **`Card`**: Surface container with elevation variants (`default`, `elevated`, `outlined`), padding tokens, and interactive hover state.
 - **`Badge`**: Pill status indicator with variants (`default`, `accent`, `warning`, `success`, `danger`), size variants, dot mode, and icon support.
 - **`Stack`**: Layout primitive for flexible row/column layouts with tokenized gaps.
@@ -233,12 +236,14 @@ Reusable layout wrappers that intelligently allocate the available screen withou
 - **`LegalNotice`**: Bilingual modal card detailing client-side privacy, MIT license, and disclaimers.
 
 ### Modals & Feedback
+
 - **`Dialog`**: Accessible modal dialog rendered into React portal with `aria-modal="true"`, focus trapping, escape key listener, and backdrop blur.
 - **`ConfirmDialog`**: Pre-configured confirmation modal with title, message, confirm/cancel buttons, and destructive danger styling.
 - **`Alert`**: Inline banner with semantic intents (`info`, `success`, `warning`, `danger`).
 - **`Toast`**: Transient floating notification with auto-dismiss timer and accessible live region.
 
 ### Iconography Collection
+
 Shared SVG vector icons with consistent 20×20px or 24×24px viewboxes:
 `SunIcon`, `MoonIcon`, `SettingsIcon`, `DownloadIcon`, `CloseIcon`, `CheckIcon`, `CopyIcon`, `PlayIcon`, `PauseIcon`, `RotateCcwIcon`, `HintIcon`, `ExternalLinkIcon`, etc. See `src/components/icons/icons.tsx` for the complete exported set.
 
@@ -279,3 +284,7 @@ npm run build
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Shared catalog migration
+
+See [the catalog contract and verification guide](docs/catalog-migration.md) for component boundaries, base.css versus global.css, neutral helpers, clipboard feedback, and shared consumer browser tests.

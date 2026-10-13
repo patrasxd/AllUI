@@ -1,6 +1,7 @@
 import type { HeaderMenuLabels } from './types'
 
-export type Locale = 'en' | 'pl'
+import type { Locale } from '../../utils/localization'
+export type { Locale } from '../../utils/localization'
 
 export type HeaderMenuFullLabels = Required<HeaderMenuLabels>
 

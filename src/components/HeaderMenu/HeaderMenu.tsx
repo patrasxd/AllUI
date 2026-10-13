@@ -1,15 +1,24 @@
 import React, { useState, useRef, useEffect, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ThemeContext } from '../../theme/ThemeProvider'
+import { MotionContext } from '../../motion/MotionProvider'
 import type { HeaderMenuProps } from './types'
 import { headerMenuTranslations, type Locale } from './i18n'
 import './HeaderMenu.css'
 
-
-
 function HamburgerIcon({ isOpen }: { isOpen: boolean }) {
   return (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
       {isOpen ? (
         <>
           <line x1="18" y1="6" x2="6" y2="18" />
@@ -49,11 +58,13 @@ export function HeaderMenu({
 
   // Optional integration with shared ThemeProvider if context is present
   const themeCtx = useContext(ThemeContext)
+  const motionCtx = useContext(MotionContext)
 
   const currentTheme = controlledTheme ?? themeCtx?.theme ?? 'dark'
   const isEink = controlledEink ?? themeCtx?.isEink ?? false
+  const isMotionEnabled = !isEink && (motionCtx?.isMotionEnabled ?? true)
 
-  const defaultLabels = headerMenuTranslations[(locale as Locale)] || headerMenuTranslations.en
+  const defaultLabels = headerMenuTranslations[locale as Locale] || headerMenuTranslations.en
   const text = { ...defaultLabels, ...labels }
   const resolvedSupportLabel = supportLabel ?? text.otherProjects ?? 'See other projects'
   const baseTheme = isEink ? (currentTheme === 'e-ink-dark' ? 'dark' : 'light') : currentTheme
@@ -116,7 +127,7 @@ export function HeaderMenu({
         type="button"
         id="header-menu-toggle"
         className={`all-header-menu-btn ${isOpen ? 'all-header-menu-btn--active' : ''}`}
-        onClick={() => setIsOpen(prev => !prev)}
+        onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-label={isOpen ? text.closeMenuAria : text.menuToggleAria}
         title={text.preferences}
@@ -128,10 +139,10 @@ export function HeaderMenu({
         {isOpen && (
           <motion.div
             className="all-header-menu-dropdown"
-            initial={{ opacity: 0, y: -8, scale: 0.96 }}
+            initial={isMotionEnabled ? { opacity: 0, y: -8, scale: 0.96 } : false}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.96 }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            exit={isMotionEnabled ? { opacity: 0, y: -8, scale: 0.96 } : undefined}
+            transition={isMotionEnabled ? { duration: 0.2, ease: [0.16, 1, 0.3, 1] } : { duration: 0 }}
             role="dialog"
             aria-label={text.preferences}
           >
@@ -139,7 +150,7 @@ export function HeaderMenu({
             <div className="all-header-menu-section">
               <span className="all-header-menu-label">{text.language}</span>
               <div className="all-header-menu-options" role="group" aria-label={text.language}>
-                {locales.map(l => (
+                {locales.map((l) => (
                   <button
                     key={l.code}
                     type="button"

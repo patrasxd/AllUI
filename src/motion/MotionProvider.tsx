@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
+import { MotionConfig } from 'framer-motion'
 import type { MotionProfile, MotionContextValue } from './types'
 
 export const MotionContext = createContext<MotionContextValue | null>(null)
@@ -9,11 +10,7 @@ export interface MotionProviderProps {
   forcedNone?: boolean // e.g. when E-Ink theme is active
 }
 
-export function MotionProvider({
-  children,
-  defaultProfile = 'normal',
-  forcedNone = false,
-}: MotionProviderProps) {
+export function MotionProvider({ children, defaultProfile = 'normal', forcedNone = false }: MotionProviderProps) {
   const [profile, setProfile] = useState<MotionProfile>(defaultProfile)
   const [isReducedMotion, setIsReducedMotion] = useState<boolean>(() => {
     if (typeof window !== 'undefined' && window.matchMedia) {
@@ -52,7 +49,12 @@ export function MotionProvider({
         isMotionEnabled,
       }}
     >
-      {children}
+      <MotionConfig
+        reducedMotion={isMotionEnabled ? 'never' : 'always'}
+        transition={isMotionEnabled ? undefined : { duration: 0 }}
+      >
+        {children}
+      </MotionConfig>
     </MotionContext.Provider>
   )
 }
