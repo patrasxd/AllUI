@@ -20,6 +20,7 @@ import {
   AppFooter,
   LegalNotice,
   ControlsBar,
+  ToolbarGroup,
   ModeSelect,
 } from '../index'
 import { formatTime, formatStopwatchTime, pad3 } from '../../utils'
@@ -31,7 +32,7 @@ describe('@all/ui Shared Components Public API', () => {
       render(
         <Button variant="primary" size="lg" onClick={handleClick}>
           Click Me
-        </Button>
+        </Button>,
       )
       const btn = screen.getByRole('button', { name: /click me/i })
       expect(btn).toBeInTheDocument()
@@ -46,7 +47,7 @@ describe('@all/ui Shared Components Public API', () => {
       render(
         <Button variant="success" size="xl" shape="circle">
           Start
-        </Button>
+        </Button>,
       )
       const btn = screen.getByRole('button', { name: /start/i })
       expect(btn).toBeInTheDocument()
@@ -60,7 +61,7 @@ describe('@all/ui Shared Components Public API', () => {
       render(
         <Button loading onClick={handleClick}>
           Submit
-        </Button>
+        </Button>,
       )
       const btn = screen.getByRole('button', { name: /submit/i })
       expect(btn).toBeDisabled()
@@ -72,12 +73,7 @@ describe('@all/ui Shared Components Public API', () => {
     })
 
     it('IconButton enforces accessible name and renders icon', () => {
-      render(
-        <IconButton
-          aria-label="Settings"
-          icon={<span data-testid="settings-icon">Icon</span>}
-        />
-      )
+      render(<IconButton aria-label="Settings" icon={<span data-testid="settings-icon">Icon</span>} />)
       const btn = screen.getByRole('button', { name: 'Settings' })
       expect(btn).toBeInTheDocument()
       expect(screen.getByTestId('settings-icon')).toBeInTheDocument()
@@ -89,7 +85,7 @@ describe('@all/ui Shared Components Public API', () => {
       render(
         <Badge variant="success" size="sm" dot>
           Active
-        </Badge>
+        </Badge>,
       )
       const badge = screen.getByText('Active').parentElement
       expect(badge).toHaveClass('all-badge--success')
@@ -103,7 +99,7 @@ describe('@all/ui Shared Components Public API', () => {
       render(
         <Card variant="elevated" padding="lg" interactive data-testid="card">
           Card Body
-        </Card>
+        </Card>,
       )
       const card = screen.getByTestId('card')
       expect(card).toHaveClass('all-card--elevated')
@@ -114,13 +110,7 @@ describe('@all/ui Shared Components Public API', () => {
 
   describe('Input', () => {
     it('links label, helper text, and handles input change', () => {
-      render(
-        <Input
-          label="Email Address"
-          helperText="We will never share your email"
-          placeholder="user@example.com"
-        />
-      )
+      render(<Input label="Email Address" helperText="We will never share your email" placeholder="user@example.com" />)
       const input = screen.getByLabelText('Email Address')
       expect(input).toBeInTheDocument()
       expect(screen.getByText('We will never share your email')).toBeInTheDocument()
@@ -130,15 +120,15 @@ describe('@all/ui Shared Components Public API', () => {
     })
 
     it('displays error state with aria-invalid', () => {
-      render(
-        <Input
-          label="Username"
-          error="Username is required"
-        />
-      )
+      render(<Input label="Username" error="Username is required" />)
       const input = screen.getByLabelText('Username')
       expect(input).toHaveAttribute('aria-invalid', 'true')
       expect(screen.getByRole('alert')).toHaveTextContent('Username is required')
+    })
+
+    it('supports compact form density', () => {
+      render(<Input label="Count" density="compact" />)
+      expect(screen.getByLabelText('Count').closest('.all-input-container')).toHaveClass('all-input-container--compact')
     })
   })
 
@@ -153,7 +143,7 @@ describe('@all/ui Shared Components Public API', () => {
             { value: 'dark', label: 'Dark' },
           ]}
           onChange={handleChange}
-        />
+        />,
       )
       const select = screen.getByLabelText('Theme Choice')
       expect(select).toBeInTheDocument()
@@ -161,18 +151,20 @@ describe('@all/ui Shared Components Public API', () => {
       fireEvent.change(select, { target: { value: 'dark' } })
       expect(handleChange).toHaveBeenCalledTimes(1)
     })
+
+    it('supports compact form density', () => {
+      render(<Select label="Scale" density="compact" options={[{ value: '1', label: '100%' }]} />)
+      expect(screen.getByLabelText('Scale').closest('.all-select-container')).toHaveClass(
+        'all-select-container--compact',
+      )
+    })
   })
 
   describe('Toggle', () => {
     it('renders accessible switch and toggles state', () => {
       const handleChange = vi.fn()
       render(
-        <Toggle
-          checked={false}
-          onChange={handleChange}
-          label="Enable sound"
-          description="Play game audio effects"
-        />
+        <Toggle checked={false} onChange={handleChange} label="Enable sound" description="Play game audio effects" />,
       )
       const toggle = screen.getByRole('switch', { name: 'Enable sound' })
       expect(toggle).toBeInTheDocument()
@@ -194,7 +186,7 @@ describe('@all/ui Shared Components Public API', () => {
           description="Are you sure you want to proceed?"
         >
           <div>Dialog Inner Content</div>
-        </Dialog>
+        </Dialog>,
       )
 
       const dialog = screen.getByRole('dialog')
@@ -211,7 +203,7 @@ describe('@all/ui Shared Components Public API', () => {
       render(
         <Dialog isOpen={false} onClose={vi.fn()} title="Hidden Dialog">
           Hidden
-        </Dialog>
+        </Dialog>,
       )
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     })
@@ -222,7 +214,7 @@ describe('@all/ui Shared Components Public API', () => {
       render(
         <Alert variant="danger" title="System Error">
           Unable to save file.
-        </Alert>
+        </Alert>,
       )
       const alert = screen.getByRole('alert')
       expect(alert).toHaveClass('all-alert--danger')
@@ -234,14 +226,7 @@ describe('@all/ui Shared Components Public API', () => {
       vi.useFakeTimers()
       const handleClose = vi.fn()
 
-      render(
-        <Toast
-          isOpen={true}
-          onClose={handleClose}
-          message="Document saved successfully!"
-          duration={3000}
-        />
-      )
+      render(<Toast isOpen={true} onClose={handleClose} message="Document saved successfully!" duration={3000} />)
 
       expect(screen.getByText('Document saved successfully!')).toBeInTheDocument()
 
@@ -260,7 +245,7 @@ describe('@all/ui Shared Components Public API', () => {
         <Stack direction="row" gap="lg" align="center" data-testid="stack">
           <div>Item 1</div>
           <div>Item 2</div>
-        </Stack>
+        </Stack>,
       )
       const stack = screen.getByTestId('stack')
       expect(stack).toHaveClass('all-stack--dir-row')
@@ -290,7 +275,7 @@ describe('@all/ui Shared Components Public API', () => {
           title="Sample Title"
           actions={<span data-testid="test-action">Extra</span>}
           menu={<span data-testid="test-menu">Menu</span>}
-        />
+        />,
       )
       expect(screen.getByTestId('test-logo')).toBeInTheDocument()
       expect(screen.getByText('Sample Title')).toBeInTheDocument()
@@ -311,7 +296,7 @@ describe('@all/ui Shared Components Public API', () => {
           onThemeChange={handleThemeChange}
           isEink={false}
           onEinkChange={handleEinkChange}
-        />
+        />,
       )
 
       const toggle = screen.getByRole('button', { name: /preferences/i })
@@ -322,6 +307,8 @@ describe('@all/ui Shared Components Public API', () => {
       expect(screen.getByRole('dialog')).toBeInTheDocument()
       expect(screen.getByText('English')).toBeInTheDocument()
       expect(screen.getByText('Polski')).toBeInTheDocument()
+      expect(screen.getByText('E-reader mode')).toBeInTheDocument()
+      expect(screen.queryByText(/E-reader mode \(E-ink\)/i)).not.toBeInTheDocument()
 
       // Select PL
       const plBtn = screen.getByRole('button', { name: /Polski/i })
@@ -342,6 +329,15 @@ describe('@all/ui Shared Components Public API', () => {
       fireEvent.click(toggle)
       expect(toggle).toHaveAttribute('aria-expanded', 'false')
     })
+
+    it('uses the localized shared e-reader label without a technical suffix', () => {
+      const { rerender } = render(<HeaderMenu locale="en" />)
+      fireEvent.click(screen.getByRole('button', { name: /preferences/i }))
+      expect(screen.getByText('E-reader mode')).toBeInTheDocument()
+
+      rerender(<HeaderMenu locale="pl" />)
+      expect(screen.getByText('Tryb czytnika')).toBeInTheDocument()
+    })
   })
 
   describe('AppFooter', () => {
@@ -353,7 +349,7 @@ describe('@all/ui Shared Components Public API', () => {
           legalLabel="Legal Notice"
           onLegalClick={handleLegal}
           links={[{ label: 'GitHub', href: 'https://github.com', external: true }]}
-        />
+        />,
       )
 
       expect(screen.getByText('TestApp © 2026.')).toBeInTheDocument()
@@ -387,7 +383,7 @@ describe('@all/ui Shared Components Public API', () => {
         <ControlsBar data-testid="controls-bar">
           <button>Action 1</button>
           <button>Action 2</button>
-        </ControlsBar>
+        </ControlsBar>,
       )
       const bar = screen.getByTestId('controls-bar')
       expect(bar).toHaveClass('all-controls-bar')
@@ -407,7 +403,7 @@ describe('@all/ui Shared Components Public API', () => {
           ]}
           value="easy"
           onChange={handleChange}
-        />
+        />,
       )
 
       const hardBtn = screen.getByRole('button', { name: 'Hard' })
@@ -433,5 +429,17 @@ describe('@all/ui Shared Components Public API', () => {
 
       expect(formatStopwatchTime(65430)).toBe('01:05.43')
     })
+  })
+})
+
+describe('editor workspace primitives', () => {
+  it('optionally renders a visible ToolbarGroup caption', () => {
+    render(
+      <ToolbarGroup label="Font controls" caption="Font">
+        Commands
+      </ToolbarGroup>,
+    )
+    expect(screen.getByText('Font')).toHaveClass('all-toolbar-group__caption')
+    expect(screen.getByRole('group', { name: 'Font controls' })).toHaveClass('all-toolbar-group--captioned')
   })
 })

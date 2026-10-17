@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import type { Theme, ThemeContextValue } from './types'
+import { safeGetItem, safeSetItem } from '../utils/storage'
 
 export const ThemeContext = createContext<ThemeContextValue | null>(null)
+const themes: readonly Theme[] = ['dark', 'light', 'e-ink-light', 'e-ink-dark']
 
 export interface ThemeProviderProps {
   children: React.ReactNode
@@ -9,19 +11,10 @@ export interface ThemeProviderProps {
   storageKey?: string
 }
 
-export function ThemeProvider({
-  children,
-  defaultTheme = 'dark',
-  storageKey = 'all_theme',
-}: ThemeProviderProps) {
+export function ThemeProvider({ children, defaultTheme = 'dark', storageKey = 'all_theme' }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem(storageKey) as Theme | null
-      if (stored && ['dark', 'light', 'e-ink-light', 'e-ink-dark'].includes(stored)) {
-        return stored
-      }
-    }
-    return defaultTheme
+    const stored = typeof window !== 'undefined' ? safeGetItem(storageKey) : null
+    return themes.find((theme) => theme === stored) ?? defaultTheme
   })
 
   const isEink = theme === 'e-ink-light' || theme === 'e-ink-dark'
@@ -54,18 +47,8 @@ export function ThemeProvider({
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme)
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.setItem(storageKey, newTheme)
-      } catch {
-        // Ignore storage errors in restricted contexts
-      }
-    }
+    if (typeof window !== 'undefined') safeSetItem(storageKey, newTheme)
   }
 
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme, isEink, isDark }}>
-      {children}
-    </ThemeContext.Provider>
-  )
+  return <ThemeContext.Provider value={{ theme, setTheme, isEink, isDark }}>{children}</ThemeContext.Provider>
 }

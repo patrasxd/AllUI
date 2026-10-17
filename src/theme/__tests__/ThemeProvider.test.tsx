@@ -28,6 +28,7 @@ describe('ThemeProvider & useTheme', () => {
   })
 
   afterEach(() => {
+    vi.restoreAllMocks()
     localStorage.clear()
   })
 
@@ -35,7 +36,7 @@ describe('ThemeProvider & useTheme', () => {
     render(
       <ThemeProvider>
         <ThemeTestConsumer />
-      </ThemeProvider>
+      </ThemeProvider>,
     )
 
     expect(screen.getByTestId('current-theme')).toHaveTextContent('dark')
@@ -50,7 +51,7 @@ describe('ThemeProvider & useTheme', () => {
     render(
       <ThemeProvider defaultTheme="light">
         <ThemeTestConsumer />
-      </ThemeProvider>
+      </ThemeProvider>,
     )
 
     expect(screen.getByTestId('current-theme')).toHaveTextContent('light')
@@ -64,7 +65,7 @@ describe('ThemeProvider & useTheme', () => {
     render(
       <ThemeProvider storageKey="custom-storage-key" defaultTheme="dark">
         <ThemeTestConsumer />
-      </ThemeProvider>
+      </ThemeProvider>,
     )
 
     expect(screen.getByTestId('current-theme')).toHaveTextContent('e-ink-dark')
@@ -73,11 +74,31 @@ describe('ThemeProvider & useTheme', () => {
     expect(document.documentElement.getAttribute('data-eink')).toBe('true')
   })
 
+  it('keeps theme controls working when browser storage is blocked', () => {
+    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('Storage denied')
+    })
+    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('Storage denied')
+    })
+
+    render(
+      <ThemeProvider storageKey="blocked-storage-key">
+        <ThemeTestConsumer />
+      </ThemeProvider>,
+    )
+
+    expect(screen.getByTestId('current-theme')).toHaveTextContent('dark')
+    fireEvent.click(screen.getByText('Set E-Ink Dark'))
+    expect(screen.getByTestId('current-theme')).toHaveTextContent('e-ink-dark')
+    expect(document.documentElement.getAttribute('data-theme')).toBe('e-ink-dark')
+  })
+
   it('updates theme, DOM attributes, and localStorage when setTheme is called', () => {
     render(
       <ThemeProvider storageKey="test-theme-key">
         <ThemeTestConsumer />
-      </ThemeProvider>
+      </ThemeProvider>,
     )
 
     // Switch to light
@@ -119,9 +140,7 @@ describe('ThemeProvider & useTheme', () => {
 
   it('throws an error if useTheme is called outside ThemeProvider', () => {
     const suppressConsole = vi.spyOn(console, 'error').mockImplementation(() => {})
-    expect(() => render(<ThemeTestConsumer />)).toThrow(
-      'useTheme must be used within a ThemeProvider'
-    )
+    expect(() => render(<ThemeTestConsumer />)).toThrow('useTheme must be used within a ThemeProvider')
     suppressConsole.mockRestore()
   })
 })

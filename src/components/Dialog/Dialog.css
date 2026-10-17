@@ -84,9 +84,9 @@
   align-items: center;
   justify-content: flex-end;
   gap: var(--all-space-3, 12px);
-  padding: var(--all-space-3, 12px) var(--all-space-5, 20px);
-  border-top: var(--all-border-width, 1.5px) solid var(--all-border-2);
-  background-color: var(--all-surface-2);
+  padding: var(--all-space-3, 12px) var(--all-space-5, 20px) var(--all-space-5, 20px);
+  border-top: 0;
+  background-color: transparent;
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit;
 }
