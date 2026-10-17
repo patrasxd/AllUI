@@ -54,6 +54,12 @@
   outline: none !important;
 }
 
+.all-input-container--compact .all-input-field {
+  height: 32px;
+  padding-inline: var(--all-space-2, 8px);
+  font-size: var(--all-font-size-xs, 0.75rem);
+}
+
 .all-input-field:focus {
   outline: none !important;
   box-shadow: none !important;

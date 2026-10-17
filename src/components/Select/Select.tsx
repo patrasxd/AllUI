@@ -13,6 +13,7 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
   helperText?: string
   error?: string
   fullWidth?: boolean
+  density?: 'default' | 'compact'
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
@@ -22,13 +23,14 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
     helperText,
     error,
     fullWidth = false,
+    density = 'default',
     id: explicitId,
     disabled = false,
     className = '',
     children,
     ...props
   },
-  ref
+  ref,
 ) {
   const generatedId = useId()
   const id = explicitId || generatedId
@@ -36,16 +38,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
   const errorId = `${id}-error`
 
   const hasError = Boolean(error)
-  const describedBy = [
-    hasError ? errorId : null,
-    helperText ? helperId : null,
-  ]
-    .filter(Boolean)
-    .join(' ') || undefined
+  const describedBy = [hasError ? errorId : null, helperText ? helperId : null].filter(Boolean).join(' ') || undefined
 
   const containerClasses = [
     'all-select-container',
     fullWidth ? 'all-select-container--full' : '',
+    density === 'compact' ? 'all-select-container--compact' : '',
     disabled ? 'all-select-container--disabled' : '',
     hasError ? 'all-select-container--error' : '',
     className,

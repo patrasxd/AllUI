@@ -1,4 +1,23 @@
-import type { SVGProps } from 'react'
+import type { ReactNode, SVGProps } from 'react'
+
+function EditorIcon({ children, ...props }: SVGProps<SVGSVGElement> & { children: ReactNode }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      {children}
+    </svg>
+  )
+}
 
 export function PlayIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -183,7 +202,18 @@ export function HintIcon(props: SVGProps<SVGSVGElement>) {
 
 export function CopyIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
       <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
     </svg>
@@ -192,7 +222,18 @@ export function CopyIcon(props: SVGProps<SVGSVGElement>) {
 
 export function DownloadIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
       <polyline points="7 10 12 15 17 10" />
       <line x1="12" x2="12" y1="15" y2="3" />
@@ -202,7 +243,18 @@ export function DownloadIcon(props: SVGProps<SVGSVGElement>) {
 
 export function UploadIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
       <polyline points="17 8 12 3 7 8" />
       <line x1="12" x2="12" y1="3" y2="15" />
@@ -212,7 +264,18 @@ export function UploadIcon(props: SVGProps<SVGSVGElement>) {
 
 export function TrashIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <path d="M3 6h18" />
       <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
       <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
@@ -222,7 +285,18 @@ export function TrashIcon(props: SVGProps<SVGSVGElement>) {
 
 export function CheckIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <polyline points="20 6 9 17 4 12" />
     </svg>
   )
@@ -230,7 +304,18 @@ export function CheckIcon(props: SVGProps<SVGSVGElement>) {
 
 export function VolumeIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
       <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
       <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
@@ -240,7 +325,18 @@ export function VolumeIcon(props: SVGProps<SVGSVGElement>) {
 
 export function ExternalLinkIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
       <polyline points="15 3 21 3 21 9" />
       <line x1="10" x2="21" y1="14" y2="3" />
@@ -250,7 +346,18 @@ export function ExternalLinkIcon(props: SVGProps<SVGSVGElement>) {
 
 export function SunIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <circle cx="12" cy="12" r="4" />
       <path d="M12 2v2" />
       <path d="M12 20v2" />
@@ -266,7 +373,18 @@ export function SunIcon(props: SVGProps<SVGSVGElement>) {
 
 export function MoonIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
     </svg>
   )
@@ -274,7 +392,18 @@ export function MoonIcon(props: SVGProps<SVGSVGElement>) {
 
 export function CodeIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <polyline points="16 18 22 12 16 6" />
       <polyline points="8 6 2 12 8 18" />
     </svg>
@@ -283,7 +412,18 @@ export function CodeIcon(props: SVGProps<SVGSVGElement>) {
 
 export function EyeIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
       <circle cx="12" cy="12" r="3" />
     </svg>
@@ -292,7 +432,18 @@ export function EyeIcon(props: SVGProps<SVGSVGElement>) {
 
 export function EyeOffIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
       <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
       <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
@@ -303,7 +454,18 @@ export function EyeOffIcon(props: SVGProps<SVGSVGElement>) {
 
 export function PhotoIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
       <circle cx="9" cy="9" r="2" />
       <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
@@ -365,7 +527,18 @@ export const IconLevel = LevelIcon
 
 export function QrCodeIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <rect width="5" height="5" x="3" y="3" rx="1" />
       <rect width="5" height="5" x="16" y="3" rx="1" />
       <rect width="5" height="5" x="3" y="16" rx="1" />
@@ -385,7 +558,18 @@ export const IconQrCode = QrCodeIcon
 
 export function CameraIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
       <circle cx="12" cy="13" r="3" />
     </svg>
@@ -395,7 +579,18 @@ export const IconCamera = CameraIcon
 
 export function SwitchCameraIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <path d="M11 19H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5" />
       <path d="M13 5h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-5" />
       <circle cx="12" cy="12" r="3" />
@@ -408,7 +603,18 @@ export const IconSwitchCamera = SwitchCameraIcon
 
 export function StopwatchIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <line x1="10" x2="14" y1="2" y2="2" />
       <line x1="12" x2="12" y1="14" y2="8" />
       <circle cx="12" cy="14" r="8" />
@@ -419,7 +625,18 @@ export const IconStopwatch = StopwatchIcon
 
 export function NotesIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z" />
       <path d="M15 3v6h6" />
       <path d="M9 13h6" />
@@ -431,7 +648,18 @@ export const IconNotes = NotesIcon
 
 export function PlusIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <line x1="12" y1="5" x2="12" y2="19" />
       <line x1="5" y1="12" x2="19" y2="12" />
     </svg>
@@ -441,7 +669,18 @@ export const IconPlus = PlusIcon
 
 export function VolumeMuteIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
       <line x1="23" y1="9" x2="17" y2="15" />
       <line x1="17" y1="9" x2="23" y2="15" />
@@ -450,6 +689,171 @@ export function VolumeMuteIcon(props: SVGProps<SVGSVGElement>) {
 }
 export const IconVolumeMute = VolumeMuteIcon
 
+export function FilePlusIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+      <path d="M14 2v6h6" />
+      <path d="M12 12v6M9 15h6" />
+    </EditorIcon>
+  )
+}
+export function FolderOpenIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M3 20h16a2 2 0 0 0 1.9-1.4l2-6A2 2 0 0 0 21 10H7a2 2 0 0 0-1.9 1.4Z" />
+      <path d="M3 20V5a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v2" />
+    </EditorIcon>
+  )
+}
+export function SaveIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z" />
+      <path d="M17 21v-8H7v8M7 3v5h8" />
+    </EditorIcon>
+  )
+}
+export function SaveAsIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h6" />
+      <path d="M14 2v6h6M8 13h4" />
+      <path d="m16 19 5-5 2 2-5 5-3 1Z" />
+    </EditorIcon>
+  )
+}
+export function RedoIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="m23 4-6 6h6V4Z" />
+      <path d="M20.5 15a9 9 0 1 1-2.1-9.4L23 10" />
+    </EditorIcon>
+  )
+}
+export function CutIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <circle cx="6" cy="7" r="3" />
+      <circle cx="6" cy="17" r="3" />
+      <path d="m8.7 8.4 12.3 6.9M8.7 15.6 21 8.7" />
+    </EditorIcon>
+  )
+}
+export function PasteIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M9 5H6a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3" />
+      <rect x="8" y="2" width="8" height="5" rx="1" />
+      <path d="M15 11h6M18 8v6" />
+    </EditorIcon>
+  )
+}
+export function SearchIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-4-4" />
+    </EditorIcon>
+  )
+}
+export function ReplaceIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M4 7h13l-3-3M20 17H7l3 3" />
+    </EditorIcon>
+  )
+}
+export function EraserIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="m7 21-4-4L14 6l4 4Z" />
+      <path d="m14 6 3-3 4 4-3 3M7 21h14" />
+    </EditorIcon>
+  )
+}
+export function PaintbrushIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M18.4 2.6a2 2 0 0 1 3 2.7L12.7 14l-4-4Z" />
+      <path d="M9 13c-3 0-5 2-5 5 0 1-1 2-2 2 2 2 8 2 9-4" />
+    </EditorIcon>
+  )
+}
+export function QuoteIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M3 21c3 0 7-1 7-8V5H3v8h4c0 3-1 4-4 4ZM14 21c3 0 7-1 7-8V5h-7v8h4c0 3-1 4-4 4Z" />
+    </EditorIcon>
+  )
+}
+export function ListIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M8 6h13M8 12h13M8 18h13" />
+      <circle cx="3" cy="6" r="1" fill="currentColor" />
+      <circle cx="3" cy="12" r="1" fill="currentColor" />
+      <circle cx="3" cy="18" r="1" fill="currentColor" />
+    </EditorIcon>
+  )
+}
+export function ListOrderedIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M10 6h11M10 12h11M10 18h11M4 4h1v4M4 11h2l-2 3h2M4 17h2l-2 3h2" />
+    </EditorIcon>
+  )
+}
+export function IndentIncreaseIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M9 6h12M9 12h12M9 18h12M3 8l4 4-4 4Z" />
+    </EditorIcon>
+  )
+}
+export function IndentDecreaseIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M9 6h12M9 12h12M9 18h12M7 8l-4 4 4 4Z" />
+    </EditorIcon>
+  )
+}
+export function AlignLeftIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M4 6h16M4 10h10M4 14h16M4 18h10" />
+    </EditorIcon>
+  )
+}
+export function AlignCenterIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M4 6h16M7 10h10M4 14h16M7 18h10" />
+    </EditorIcon>
+  )
+}
+export function AlignRightIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M4 6h16M10 10h10M4 14h16M10 18h10" />
+    </EditorIcon>
+  )
+}
+export function AlignJustifyIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+    </EditorIcon>
+  )
+}
+export function HorizontalRuleIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <EditorIcon {...props}>
+      <path d="M3 12h18" />
+    </EditorIcon>
+  )
+}
+
 export const IconPlay = PlayIcon
 export const IconPause = PauseIcon
 export const IconRotateCcw = RotateCcwIcon
@@ -457,4 +861,3 @@ export const IconCopy = CopyIcon
 export const IconTrash = TrashIcon
 export const IconCheck = CheckIcon
 export const IconVolume = VolumeIcon
-

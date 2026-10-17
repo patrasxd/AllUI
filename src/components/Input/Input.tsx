@@ -8,6 +8,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
   fullWidth?: boolean
+  density?: 'default' | 'compact'
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
@@ -18,12 +19,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     startIcon,
     endIcon,
     fullWidth = false,
+    density = 'default',
     id: explicitId,
     disabled = false,
     className = '',
     ...props
   },
-  ref
+  ref,
 ) {
   const generatedId = useId()
   const id = explicitId || generatedId
@@ -31,16 +33,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   const errorId = `${id}-error`
 
   const hasError = Boolean(error)
-  const describedBy = [
-    hasError ? errorId : null,
-    helperText ? helperId : null,
-  ]
-    .filter(Boolean)
-    .join(' ') || undefined
+  const describedBy = [hasError ? errorId : null, helperText ? helperId : null].filter(Boolean).join(' ') || undefined
 
   const containerClasses = [
     'all-input-container',
     fullWidth ? 'all-input-container--full' : '',
+    density === 'compact' ? 'all-input-container--compact' : '',
     disabled ? 'all-input-container--disabled' : '',
     hasError ? 'all-input-container--error' : '',
     className,

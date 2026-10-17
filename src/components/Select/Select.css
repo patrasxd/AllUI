@@ -56,6 +56,16 @@
   cursor: pointer;
 }
 
+.all-select-container--compact .all-select-field {
+  height: 32px;
+  padding-inline-start: var(--all-space-2, 8px);
+  font-size: var(--all-font-size-xs, 0.75rem);
+}
+
+.all-select-container--compact .all-select-arrow {
+  right: var(--all-space-2, 8px);
+}
+
 .all-select-field:focus {
   outline: none !important;
   box-shadow: none !important;

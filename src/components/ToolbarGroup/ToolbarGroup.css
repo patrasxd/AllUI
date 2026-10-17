@@ -1,0 +1,40 @@
+.all-toolbar-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--all-space-1);
+  min-width: 0;
+  padding-inline-end: var(--all-space-2);
+  border-inline-end: var(--all-border-width) solid var(--all-border);
+}
+.all-toolbar-group:last-child {
+  padding-inline-end: 0;
+  border-inline-end: 0;
+}
+
+.all-toolbar-group--captioned {
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--all-space-1);
+}
+
+.all-toolbar-group__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--all-space-1);
+  min-height: 32px;
+}
+
+.all-toolbar-group__caption {
+  width: 100%;
+  overflow: hidden;
+  color: var(--all-text-muted);
+  font-family: var(--all-font-sans);
+  font-size: var(--all-font-size-xs);
+  line-height: 1;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
