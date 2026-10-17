@@ -85,3 +85,15 @@ export interface FullBleedLayoutProps {
   overlay?: React.ReactNode
   className?: string
 }
+
+export interface SidePanelProps {
+  /** Accessible name for the complementary panel. */
+  label: string
+  /** Panel heading content. */
+  title: React.ReactNode
+  /** Accessible name for the close button. */
+  closeLabel: string
+  onClose: () => void
+  children: React.ReactNode
+  className?: string
+}

@@ -193,6 +193,7 @@ Reusable layout wrappers that intelligently allocate the available screen withou
 | **`SplitWorkspaceLayout`**  | Multi-pane workbench workflows                   | Required slots: `inputPane`, `outputPane`. Optional: `toolbar`, `statusBar`; `splitRatio` selects `50/50`, `40/60`, or `35/65`.                  |
 | **`CenteredUtilityLayout`** | Focused single-card tools, converters, timers    | Required: `primaryDisplay`. Optional: `controls`, `header`, `footer`, and `maxWidth` (CSS string or number).                                     |
 | **`FullBleedLayout`**       | Edge-to-edge canvas, sound meters, sensor rulers | Intended for immersive touch or sensor views. Eliminates margin padding, fills 100% of available viewport area.                                  |
+| **`SidePanel`**             | Docked navigation and inspector panels           | Slots: accessible `label`, `title`, close action and scrollable `children`; consumers set panel width and docking behavior.                       |
 
 ---
 
