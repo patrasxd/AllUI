@@ -11,6 +11,7 @@ export interface DialogProps {
   onOpenChange?: (open: boolean) => void
   title?: React.ReactNode
   description?: React.ReactNode
+  closeLabel?: string
   children?: React.ReactNode
   footer?: React.ReactNode
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'full'
@@ -27,6 +28,7 @@ export function Dialog({
   onOpenChange,
   title,
   description,
+  closeLabel = 'Close dialog',
   children,
   footer,
   maxWidth = 'md',
@@ -149,10 +151,10 @@ export function Dialog({
 
             {showCloseButton && (
               <IconButton
-                aria-label="Close dialog"
                 variant="ghost"
                 size="sm"
                 className="all-dialog__close"
+                aria-label={closeLabel}
                 onClick={handleClose}
                 icon={<CloseIcon width="16" height="16" />}
               />

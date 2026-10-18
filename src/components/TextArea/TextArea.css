@@ -1,0 +1,13 @@
+.all-input-field--multiline {
+  box-sizing: border-box;
+  height: auto;
+  min-height: 38px;
+  padding-block: 7.5px;
+  line-height: 1.5;
+  resize: vertical;
+  overflow: auto;
+}
+
+.all-input-container--compact .all-input-field--multiline {
+  min-height: 32px;
+}

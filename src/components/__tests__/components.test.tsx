@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent, act } from '@testing-library/react'
 import {
   Button,
+  ButtonTooltipProvider,
   IconButton,
   Badge,
   Card,
@@ -22,6 +23,7 @@ import {
   ControlsBar,
   ToolbarGroup,
   ModeSelect,
+  WorkspaceTabs,
 } from '../index'
 import { formatTime, formatStopwatchTime, pad3 } from '../../utils'
 
@@ -77,6 +79,53 @@ describe('@all/ui Shared Components Public API', () => {
       const btn = screen.getByRole('button', { name: 'Settings' })
       expect(btn).toBeInTheDocument()
       expect(screen.getByTestId('settings-icon')).toBeInTheDocument()
+    })
+
+    it('supports an optional tooltip prop and preserves native title as a fallback', () => {
+      const { rerender } = render(<Button tooltip="Make selected text bold.">Bold</Button>)
+      expect(screen.getByRole('button', { name: 'Bold' })).toHaveAttribute('title', 'Make selected text bold')
+
+      rerender(<IconButton aria-label="Bold" icon={<span>B</span>} tooltip="Make selected text bold." />)
+      expect(screen.getByRole('button', { name: 'Bold' })).toHaveAttribute('title', 'Make selected text bold')
+
+      rerender(<Button title="Existing browser hint.">Save</Button>)
+      expect(screen.getByRole('button', { name: 'Save' })).toHaveAttribute('title', 'Existing browser hint')
+    })
+
+    it('uses a localized provider description when an explicit tooltip is not supplied', () => {
+      render(
+        <ButtonTooltipProvider
+          locale="en"
+          resolveTooltip={(label) => (label === 'Bold' ? 'Make selected text bold.' : undefined)}
+        >
+          <Button aria-label="Bold">B</Button>
+        </ButtonTooltipProvider>,
+      )
+      expect(screen.getByRole('button', { name: 'Bold' })).toHaveAttribute('title', 'Make selected text bold')
+    })
+
+    it('provides shared localized descriptions for workspace controls', () => {
+      render(
+        <ButtonTooltipProvider locale="pl">
+          <IconButton aria-label="Dodaj arkusz" icon={<span>+</span>} />
+        </ButtonTooltipProvider>,
+      )
+      expect(screen.getByRole('button', { name: 'Dodaj arkusz' })).toHaveAttribute(
+        'title',
+        'Dodaj arkusz do skoroszytu',
+      )
+    })
+
+    it('supports tooltips on shared command tabs', () => {
+      render(
+        <WorkspaceTabs
+          label="Document tools"
+          items={[{ id: 'format', label: 'Format', tooltip: 'Show text formatting tools.', tabId: 'tab-format', panelId: 'panel' }]}
+          activeId="format"
+          onChange={() => undefined}
+        />,
+      )
+      expect(screen.getByRole('tab', { name: 'Format' })).toHaveAttribute('title', 'Show text formatting tools')
     })
   })
 

@@ -1,9 +1,44 @@
-import React, { forwardRef } from 'react'
+import React, { createContext, forwardRef, useContext, type ReactNode } from 'react'
+import {
+  getSharedButtonTooltip,
+  normalizeButtonTooltip,
+  type ButtonTooltipLocale,
+} from './buttonTooltips'
 import './Button.css'
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'outline' | 'success'
 export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl'
 export type ButtonShape = 'default' | 'circle' | 'pill'
+
+export type ButtonTooltipResolver = (label: string) => string | undefined
+
+const ButtonTooltipContext = createContext<ButtonTooltipResolver | undefined>(undefined)
+
+export function ButtonTooltipProvider({
+  locale,
+  resolveTooltip,
+  children,
+}: {
+  locale?: ButtonTooltipLocale
+  resolveTooltip?: ButtonTooltipResolver
+  children: ReactNode
+}) {
+  const resolver: ButtonTooltipResolver = (label) =>
+    resolveTooltip?.(label) || (locale ? getSharedButtonTooltip(locale, label) : undefined)
+  return <ButtonTooltipContext.Provider value={resolver}>{children}</ButtonTooltipContext.Provider>
+}
+
+function visibleText(node: ReactNode): string {
+  return React.Children.toArray(node)
+    .map((child) => {
+      if (typeof child === 'string' || typeof child === 'number') return String(child)
+      if (React.isValidElement<{ children?: ReactNode }>(child)) return visibleText(child.props.children)
+      return ''
+    })
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
@@ -13,6 +48,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconPosition?: 'left' | 'right'
   loading?: boolean
   fullWidth?: boolean
+  /** Optional short description shown by the browser on hover or keyboard focus. */
+  tooltip?: string
   children?: React.ReactNode
 }
 
@@ -27,12 +64,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     fullWidth = false,
     disabled = false,
     children,
+    tooltip,
+    title,
+    'aria-label': ariaLabel,
     className = '',
     type = 'button',
     ...props
   },
   ref
 ) {
+  const resolveTooltip = useContext(ButtonTooltipContext)
+  const label = typeof ariaLabel === 'string' ? ariaLabel : visibleText(children)
+  const contextualTooltip = label ? resolveTooltip?.(label) : undefined
+  const resolvedTitle = normalizeButtonTooltip(tooltip?.trim() || contextualTooltip?.trim() || title)
   const isDisabled = disabled || loading
 
   const classNames = [
@@ -54,6 +98,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       className={classNames}
       disabled={isDisabled}
       aria-busy={loading ? 'true' : undefined}
+      aria-label={ariaLabel}
+      title={resolvedTitle}
       {...props}
     >
       {loading && (
